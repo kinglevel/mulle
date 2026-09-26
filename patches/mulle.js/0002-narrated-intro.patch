@@ -1,0 +1,477 @@
+diff --git a/build_scripts/assets/assets.yml b/build_scripts/assets/assets.yml
+index 91486d7..fcf7cdd 100644
+--- a/build_scripts/assets/assets.yml
++++ b/build_scripts/assets/assets.yml
+@@ -293,6 +293,31 @@ map:
+       opaque:
+         - [ 629, 658 ]
+ 
++intro:
++  # The narrated intro from the "IntroStart" marker of 10.DXR, played after
++  # logging in (src/scenes/intro.js, score data from tools/build_intro.py).
++  10.DXR:
++    Internal:
++      members:
++        - 1 # 04b001v0 background
++        - [ 4, 5 ] # workshop overlay, Bild 15 background
++        - 12 # Bild 14 background
++        - [ 14, 22 ] # house, Mulle mounting the bike, cykel_loop frames
++        - [ 24, 50 ] # battery animation (10a005v0) and 20b082v2 battery
++        - [ 93, 99 ] # 10b001-10b004v0 backgrounds, LillCykelLoop frames
++        - [ 105, 108 ] # workshop Mulle
++        - [ 188, 189 ] # Skrotho:g background and overlay
++        - [ 196, 216 ] # dig animation (10a004v0)
++        - [ 227, 235 ] # dog animation
++        - 313 # 10b006v0 background
++        - [ 289, 290 ] # 10e005v0 narration, 10e006v0
++      opaque:
++        - 1
++        - 5
++        - 12
++        - [ 93, 96 ]
++        - 188
++        - 313
+ menu:
+   10.DXR:
+     Internal:
+diff --git a/src/game.js b/src/game.js
+index 5ff6a00..eed2e4a 100644
+--- a/src/game.js
++++ b/src/game.js
+@@ -11,6 +11,7 @@ import MulleNet from 'util/network'
+ import MulleCursor from 'util/cursor'
+ 
+ import MenuState from 'scenes/menu'
++import IntroState from 'scenes/intro'
+ 
+ import GarageState from 'scenes/garage'
+ import JunkState from 'scenes/junk'
+@@ -134,6 +135,7 @@ class MulleGame extends Phaser.Game {
+       load: LoadState,
+ 
+       menu: MenuState, // 10
++      intro: IntroState, // 10, from the IntroStart marker
+ 
+       junk: JunkState, // 02
+       garage: GarageState, // 03
+diff --git a/src/scenes/intro.js b/src/scenes/intro.js
+new file mode 100644
+index 0000000..b1056b8
+--- /dev/null
++++ b/src/scenes/intro.js
+@@ -0,0 +1,393 @@
++/**
++ * Intro: the narrated animation from the "IntroStart" marker of 10.DXR,
++ * which the original plays after you log in on the name screen and then
++ * hands over to the garage (movie 03).
++ *
++ * The score (frames, sprites, sounds, tempo, film loops, frame-script ops and
++ * the parameters of the "Anim" sprite behaviour) is extracted from the movie
++ * at build time by tools/build_intro.py into data/intro.json. This scene is a
++ * small Director score player for exactly what that intro uses:
++ *
++ *  - one tick per frame at the score tempo; a frame script may hold the
++ *    playhead ("go the frame"), wait for a sound channel, or leave the movie
++ *  - cue points of sound channel 1 go to the frame script (CuePassed)
++ *  - sprite spans keep their behaviour across frames; the "Anim" behaviour
++ *    (00.CXT member 106) steps through AnimChart frame lists, follows motion
++ *    paths and moves the playhead when its animation finishes
++ *  - film loops cycle their own frames while the span lasts
++ *
++ * Clicking or pressing a key skips to the garage.
++ */
++import MulleState from './base'
++import MulleSprite from '../objects/sprite'
++
++const MOVIE = '10.DXR'
++
++/** Lingo random(n): 1..n */
++function random (n) {
++  return Math.floor(Math.random() * n) + 1
++}
++
++/**
++ * Port of the "Anim" behaviour. Mirrors its Lingo handlers (init,
++ * setAnimAction, setAnimPath, exitFrame, doTheWhat) closely, including the
++ * quirks, so the timing matches the original.
++ */
++class AnimBehavior {
++  constructor (player, sprite, params, chart) {
++    this.player = player
++    this.sprite = sprite
++    this.p = params
++    this.actions = (chart && chart.actions) || {}
++    this.paths = (chart && chart.paths) || {}
++    this.firstFrame = params.firstframe
++    this.repeatIt = !!params.repeatit
++    this.autoSound = !!params.autosound
++    this.waitForWhat = String(params.waitforwhat || 'none').toLowerCase()
++    this.doWhat = String(params.dowhat || '').toLowerCase()
++    this.active = params.active === undefined ? true : !!params.active
++    this.movement = String(params.movement).toLowerCase() === 'custom'
++      ? String(params.custommovement).replace(/^#/, '').toLowerCase()
++      : String(params.movement).toLowerCase()
++    this.myLoc = { x: sprite.x, y: sprite.y }
++    this.waitState = 'move'
++    this.pathActive = false
++    this.actionActive = false
++    this.opSound = null
++
++    if (!this.active) return
++    this.setAnimAction(this.movement)
++    this.setMember(this.frameList[0])
++    this.setAnimPath(String(params.movepathname || ''), params.toloc, params.nrofsteps)
++    this.exitFrame()
++  }
++
++  setMember (frame) {
++    if (this.firstFrame && frame !== undefined) {
++      this.sprite.setDirectorMember(MOVIE, this.firstFrame + frame - 1)
++    }
++  }
++
++  setAnimAction (theMove) {
++    let list
++    this.movement = theMove
++    if (theMove === 'wait') {
++      const options = this.actions.wait || []
++      if (this.waitState === 'move') {
++        list = [options[0]]
++        this.waitState = 'still'
++      } else {
++        theMove = options[random(options.length - 1)]
++        list = this.actions[String(theMove).toLowerCase()] || []
++        this.waitState = 'move'
++      }
++    } else {
++      list = this.actions[theMove] || []
++    }
++
++    this.frameList = []
++    this.soundList = []
++    for (const item of list) {
++      if (Array.isArray(item)) {
++        const kind = String(item[0]).toLowerCase()
++        if (kind === 'rndhold') {
++          const [, hold, min, max] = item
++          const n = min + random(max - min)
++          for (let i = 0; i < n; i++) {
++            this.frameList.push(hold)
++            this.soundList.push(0)
++          }
++        } else if (kind === 'rndframe') {
++          this.frameList.push(item[1][random(item[1].length) - 1])
++          this.soundList.push(0)
++        } else if (kind === 'sound') {
++          const snd = item[1][random(item[1].length) - 1]
++          this.soundList.push(typeof snd === 'string' ? snd : 0)
++        }
++      } else {
++        this.frameList.push(item)
++        this.soundList.push(0)
++      }
++    }
++    // An animation the playhead waits for ends back on its first frame.
++    if (this.waitForWhat === 'anim' && this.doWhat !== 'sendspriteme' && this.movement !== 'wait') {
++      this.frameList.push(1)
++      this.soundList.push(0)
++    }
++    this.listLen = this.frameList.length
++    this.actionCounter = 0
++    this.actionActive = true
++  }
++
++  setAnimPath (name, toLoc, nrOfSteps) {
++    this.pathActive = false
++    this.pathCounter = 0
++    if (!name) return // toLoc-based moves are unused in the intro
++    const path = this.paths[name.toLowerCase()]
++    if (!path) return
++    this.movePath = path.map(p => p.point)
++      .map(([x, y]) => this.p.pathrelative ? { x: x + this.myLoc.x, y: y + this.myLoc.y } : { x, y })
++    this.nrOfSteps = this.movePath.length
++    this.pathActive = true
++  }
++
++  exitFrame () {
++    if (!this.active) return
++    if (this.pathActive) {
++      this.pathCounter++
++      this.myLoc = this.movePath[this.pathCounter - 1]
++      if (this.pathCounter >= this.nrOfSteps) {
++        this.pathActive = false
++        if (this.waitForWhat === 'path') {
++          this.doTheWhat()
++          return
++        }
++      }
++    }
++    this.sprite.x = this.myLoc.x
++    this.sprite.y = this.myLoc.y
++
++    if (!this.actionActive) return
++    this.actionCounter++
++    if (this.autoSound) {
++      const snd = this.soundList[this.actionCounter - 1]
++      if (typeof snd === 'string') {
++        if (this.opSound) this.opSound.stop()
++        this.opSound = this.player.game.mulle.playAudio(snd)
++      }
++    }
++    this.setMember(this.frameList[this.actionCounter - 1])
++
++    if (this.actionCounter >= this.listLen) {
++      if (this.repeatIt || this.movement === 'wait') {
++        this.setAnimAction(this.movement)
++      } else if (this.movement === 'still') {
++        this.actionCounter = 0
++      } else {
++        this.actionActive = false
++        if (this.waitForWhat === 'anim') this.doTheWhat()
++      }
++    }
++  }
++
++  doTheWhat () {
++    if (this.doWhat === 'gonextframe') this.player.goFrame(this.player.frameNum + 1)
++    else if (this.doWhat === 'gonextmarker') this.player.goNextMarker()
++  }
++
++  destroy () {
++    if (this.opSound) this.opSound.stop()
++  }
++}
++
++class IntroState extends MulleState {
++  preload () {
++    super.preload()
++    this.game.load.pack('intro', 'assets/intro.json', null, this)
++    this.game.load.json('intro-score', 'data/intro.json')
++  }
++
++  create () {
++    super.create()
++    this.game.mulle.addAudio('intro')
++
++    this.score = this.game.cache.getJSON('intro-score')
++    this.frames = {}
++    for (const f of this.score.frames) this.frames[f.n] = f
++    this.lastFrame = this.score.frames[this.score.frames.length - 1].n
++    this.markers = Object.keys(this.score.labels).map(Number).sort((a, b) => a - b)
++
++    this.layer = this.game.add.group()
++    this.channels = {} // ch -> { span, sprite, anim, loop, loopFrame }
++    this.sounds = {} // sound1/sound2 -> { name, snd }
++    this.firedCues = new Set()
++    this.nextFrame = null
++    this.done = false
++    this.acc = 0
++
++    const skip = () => this.finish()
++    this.game.input.onDown.addOnce(skip)
++    this.game.input.keyboard.onDownCallback = skip
++
++    this.enterFrame(this.score.frames[0].n)
++  }
++
++  // ---- playhead ----------------------------------------------------------
++
++  goFrame (n) {
++    if (this.nextFrame === null) this.nextFrame = n
++  }
++
++  goNextMarker () {
++    const next = this.markers.find(m => m > this.frameNum)
++    this.goFrame(next !== undefined ? next : this.frameNum + 1)
++  }
++
++  update () {
++    if (this.done) return
++    this.checkCues()
++    this.acc += this.game.time.elapsedMS
++    const interval = 1000 / (this.frame.tempo || 12)
++    // Don't spiral after a stall (tab in background): at most a couple of ticks.
++    if (this.acc > interval * 3) this.acc = interval * 3
++    while (this.acc >= interval && !this.done) {
++      this.acc -= interval
++      this.tick()
++    }
++  }
++
++  tick () {
++    // exitFrame: sprite behaviours first, in channel order, then the frame script.
++    for (const ch of Object.keys(this.channels).map(Number).sort((a, b) => a - b)) {
++      const c = this.channels[ch]
++      if (c.anim) c.anim.exitFrame()
++      if (c.loop) {
++        c.loopFrame = (c.loopFrame + 1) % c.loop.length
++        this.showLoopFrame(c)
++      }
++    }
++
++    const op = this.score.scripts[this.frame.script]
++    let target = this.nextFrame
++    this.nextFrame = null
++    if (target === null && op) {
++      if (op.type === 'hold') target = this.frameNum
++      else if (op.type === 'waitSound' && this.soundBusy('sound' + op.channel)) target = this.frameNum
++      else if (op.type === 'gotoMovie') return this.finish()
++    }
++    if (target === null) target = this.frameNum + 1
++    if (target > this.lastFrame) return this.finish()
++    if (target !== this.frameNum) this.enterFrame(target)
++  }
++
++  enterFrame (n) {
++    this.frameNum = n
++    this.frame = this.frames[n]
++    if (!this.frame) return this.finish()
++
++    // Sprites: a span that continues keeps its sprite and behaviour; plain
++    // score sprites just take the frame's member and position.
++    const present = {}
++    for (const s of this.frame.sprites) {
++      present[s.ch] = true
++      let c = this.channels[s.ch]
++      if (c && c.span !== s.span) {
++        this.clearChannel(s.ch)
++        c = null
++      }
++      if (!c) c = this.channels[s.ch] = this.createChannel(s)
++      else if (c.loop) {
++        c.loc = { x: s.x, y: s.y }
++        this.showLoopFrame(c)
++      } else if (!c.anim) {
++        c.sprite.x = s.x
++        c.sprite.y = s.y
++        if (c.member !== s.member) {
++          c.sprite.setDirectorMember(s.movie || MOVIE, s.member)
++          c.member = s.member
++        }
++      }
++    }
++    for (const ch of Object.keys(this.channels)) {
++      if (!present[ch]) this.clearChannel(ch)
++    }
++    // Higher score channels draw on top. (Phaser owns `z`, so sort on our own key.)
++    this.layer.customSort((a, b) => a.channel - b.channel)
++
++    // Sound channels: a member that carries on keeps playing; a new one
++    // replaces it; an empty channel stops.
++    for (const key of ['sound1', 'sound2']) {
++      const want = this.frame[key] || null
++      const cur = this.sounds[key]
++      if (cur && cur.name === want) continue
++      if (cur && cur.snd) cur.snd.stop()
++      this.sounds[key] = want ? { name: want, snd: this.game.mulle.playAudio(want) } : null
++      if (key === 'sound1') this.firedCues.clear()
++    }
++  }
++
++  createChannel (s) {
++    const sprite = new MulleSprite(this.game, s.x, s.y)
++    sprite.channel = s.ch
++    this.layer.add(sprite)
++    const c = { span: s.span, sprite, member: s.member }
++    const loop = this.score.loops[s.member]
++    if (loop) {
++      c.loop = loop
++      c.loopFrame = 0
++      c.loc = { x: s.x, y: s.y }
++      this.showLoopFrame(c)
++    } else {
++      sprite.setDirectorMember(s.movie || MOVIE, s.member)
++    }
++    const params = s.anim && this.score.anim[s.span]
++    if (params) {
++      const chart = this.score.charts[String(params.framelistmember).toLowerCase()]
++      c.anim = new AnimBehavior(this, sprite, params, chart)
++    }
++    return c
++  }
++
++  showLoopFrame (c) {
++    // The intro's film loops have a single sprite per frame, placed relative
++    // to the loop's registration point (its score location).
++    const f = c.loop[c.loopFrame][0]
++    if (!f) return
++    c.sprite.setDirectorMember(MOVIE, f.member)
++    c.sprite.x = c.loc.x + f.dx
++    c.sprite.y = c.loc.y + f.dy
++  }
++
++  clearChannel (ch) {
++    const c = this.channels[ch]
++    if (!c) return
++    if (c.anim) c.anim.destroy()
++    c.sprite.destroy()
++    delete this.channels[ch]
++  }
++
++  // ---- sound -------------------------------------------------------------
++
++  soundBusy (key) {
++    const cur = this.sounds[key]
++    return !!(cur && cur.snd && cur.snd.isPlaying)
++  }
++
++  checkCues () {
++    const cur = this.sounds.sound1
++    if (!cur || !cur.snd || !cur.snd.extraData || !cur.snd.extraData.cue) return
++    const t = cur.snd.currentTime
++    for (const [ms, name] of cur.snd.extraData.cue) {
++      if (ms <= t && !this.firedCues.has(ms)) {
++        this.firedCues.add(ms)
++        this.cuePassed(1, name)
++      }
++    }
++  }
++
++  cuePassed (channel, name) {
++    const op = this.score.scripts[this.frame.script]
++    if (op && op.cue && op.cueChannel === channel && op.cue.toLowerCase() === String(name).toLowerCase()) {
++      this.goFrame(this.frameNum + 1)
++    }
++  }
++
++  // ---- end ---------------------------------------------------------------
++
++  finish () {
++    if (this.done) return
++    this.done = true
++    // The original goes to movie 03; keep upstream's loading picture for it.
++    this.game.mulle.activeCutscene = '00b011v0'
++    this.game.state.start('garage')
++  }
++
++  shutdown () {
++    this.done = true
++    this.game.input.keyboard.onDownCallback = null
++    for (const ch of Object.keys(this.channels)) this.clearChannel(ch)
++    this.game.sound.stopAll()
++  }
++}
++
++export default IntroState
+diff --git a/src/scenes/menu.js b/src/scenes/menu.js
+index 3e77b40..e717892 100644
+--- a/src/scenes/menu.js
++++ b/src/scenes/menu.js
+@@ -71,7 +71,7 @@ class MenuState extends MulleState {
+ 
+         this.game.mulle.net.send({ name: name })
+ 
+-        this.game.state.start('garage')
++        this.game.state.start('intro') // the original plays the intro on every login
+       }
+     })
+ 
+@@ -100,7 +100,7 @@ class MenuState extends MulleState {
+ 
+         this.game.mulle.net.send({ name: name })
+ 
+-        this.game.state.start('garage')
++        this.game.state.start('intro') // the original plays the intro on every login
+       }, this)
+ 
+       y += 25

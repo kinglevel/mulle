@@ -85,6 +85,10 @@ step "Building topography"
 step "Building spritesheets (slow)"
 "$PY" build_scripts/build.py "$GAME_LANG" assets
 
+step "Extracting the narrated intro score (10.DXR)"
+"$PY" "$ROOT/tools/build_intro.py" build_data/Movies/10.DXR \
+  cst_out_new/10.DXR/metadata.json dist/data/intro.json
+
 step "Webpack bundle"
 npx webpack-cli -c webpack.prod.js
 

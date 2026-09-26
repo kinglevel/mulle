@@ -20,6 +20,9 @@ mulle/
 │   ├── install.sh          one-time prerequisites (tools, venv, npm, ISO)
 │   ├── build.sh            one-shot build of everything in vendor/mulle.js
 │   └── fetch_iso.sh        parallel downloader for the archive.org ISO
+├── tools/                  Director 6 readers (score, labels, Lingo bytecode,
+│                           chunk dump) and build_intro.py, which extracts the
+│                           narrated intro from 10.DXR into dist/data/intro.json
 ├── patches/mulle.js/       local fixes to upstream, applied by build.sh during
 │                           the build and reverted after (submodule stays clean)
 ├── vendor/
@@ -102,6 +105,11 @@ Supported languages in the upstream build script: `sv`, `no`, `da`, `fi`, `nl`.
   blocking alert if it fails. Add `?mp=1` to the URL to re-enable it.
 * On iOS there is no fullscreen API for the canvas; use Safari's *Add to Home
   Screen* instead — the web manifest requests fullscreen landscape.
+* The narrated intro (Mulle bikes home, digs out a battery, fits it) plays
+  after logging in on the name screen, as in the original. mulle.js never
+  ported it: `tools/build_intro.py` rebuilds its score from `10.DXR` and
+  `src/scenes/intro.js` (added by a patch) plays it. Click or press a key to
+  skip.
 * Useful query flags: `?mp=1` (multiplayer), `?debug=1` (upstream debug mode).
 
 ## Credits
