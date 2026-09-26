@@ -11,6 +11,10 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<meta name="apple-mobile-web-app-title" content="Mulle Meck" />
 	<meta name="theme-color" content="#000000" />
+	<!-- Opt out of Dark Reader & co: it recolours the game's DOM inputs
+	     (white text on the white name sign) and tints the pixel art. -->
+	<meta name="darkreader-lock" />
+	<meta name="color-scheme" content="only light" />
 
 	<title>Byg bil med Mulle Meck</title>
 
@@ -27,6 +31,9 @@
 
 	<div id="wrapper">
 		<div id="player"></div>
+		<!-- Upstream garage/yard/world scenes write cheat buttons in here and
+		     crash if it's missing; mobile.css keeps it hidden. -->
+		<div id="cheats"></div>
 	</div>
 
 	<!-- Tapping this is what unlocks audio, fullscreen and orientation lock:

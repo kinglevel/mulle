@@ -1,0 +1,14 @@
+diff --git a/build_scripts/assets/assets.yml b/build_scripts/assets/assets.yml
+index 540d891..91486d7 100644
+--- a/build_scripts/assets/assets.yml
++++ b/build_scripts/assets/assets.yml
+@@ -306,7 +306,8 @@ menu:
+         - [ 217, 218 ]
+         - 237 # Animation
+         - [ 287, 292 ]  # intro audio
+-        - [ 300, 307 ]  # menu audio TODO: Check [308, 310]
++        - [ 300, 307 ]  # menu audio
++        - 310  # 11d001v0: Mulle's spoken intro + lip-sync cues (menu.js talk())
+       opaque:
+         - 2
+       translations:

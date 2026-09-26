@@ -16,13 +16,18 @@ if [ ! -f "$GAME/package.json" ]; then
   exit 1
 fi
 
+# Homebrew's ffmpeg-full is keg-only; it's the one with libvorbis (see install.sh).
+if command -v brew >/dev/null 2>&1 && [ -d "$(brew --prefix)/opt/ffmpeg-full/bin" ]; then
+  export PATH="$(brew --prefix)/opt/ffmpeg-full/bin:$PATH"
+fi
+
 cd "$GAME"
 export PYTHONPATH="$GAME"
 
 step() { echo ""; echo "==> $*"; }
 
 if [ ! -x "$PY" ]; then
-  echo "Python venv missing. Create it with:"
+  echo "Python venv missing. Run scripts/install.sh, or create it with:"
   echo "  python3 -m venv $GAME/.venv"
   echo "  $GAME/.venv/bin/pip install pillow 'pytexturepacker>=1.2.1,<2' 'pydub>=0.25.1,<0.26' \\"
   echo "      'audioop-lts>=0.2.1,<0.3' 'pycdlib>=1.10.0,<2' 'gitpython>=3.1.44,<4' \\"
@@ -32,6 +37,30 @@ if [ ! -x "$PY" ]; then
 fi
 
 [ -d node_modules ] || { step "npm install"; npm install; }
+
+# Local fixes to upstream, kept as patches so the submodule stays pristine:
+# applied for the duration of the build, reverted on exit.
+PATCHES=("$ROOT"/patches/mulle.js/*.patch)
+APPLIED=()
+revert_patches() {
+  local i
+  for (( i=${#APPLIED[@]}-1; i>=0; i-- )); do
+    git apply --reverse "${APPLIED[$i]}" || echo "warning: could not revert ${APPLIED[$i]}"
+  done
+}
+trap revert_patches EXIT
+for p in "${PATCHES[@]}"; do
+  [ -f "$p" ] || continue
+  if git apply --check "$p" 2>/dev/null; then
+    step "Applying $(basename "$p")"
+    git apply "$p"
+    APPLIED+=("$p")
+  elif git apply --reverse --check "$p" 2>/dev/null; then
+    echo "already applied: $(basename "$p")"
+  else
+    echo "patch no longer applies (upstream changed?): $p"; exit 1
+  fi
+done
 
 step "Extracting ISO + Director plugin ($GAME_LANG)"
 "$PY" build_scripts/build.py "$GAME_LANG" download

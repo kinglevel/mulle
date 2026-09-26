@@ -24,7 +24,7 @@ for i in $(seq 0 $((N-1))); do
   # resume-aware: skip chunks already complete
   WANT=$(( END - START + 1 ))
   HAVE=0
-  [ -f "$PART" ] && HAVE=$(stat -c%s "$PART")
+  [ -f "$PART" ] && HAVE=$(wc -c < "$PART" | tr -d " ")
   if [ "$HAVE" -eq "$WANT" ]; then continue; fi
   curl -s --retry 8 --retry-all-errors --retry-delay 2 --speed-time 30 --speed-limit 1000 \
        -r "$START-$END" -o "$PART" "https://$HOST$PATH_ON_NODE" &
@@ -36,11 +36,11 @@ TOTAL=0
 for i in $(seq 0 $((N-1))); do
   PART="$PART_DIR/part.$i"
   [ -f "$PART" ] || { echo "MISSING part $i"; exit 1; }
-  TOTAL=$(( TOTAL + $(stat -c%s "$PART") ))
+  TOTAL=$(( TOTAL + $(wc -c < "$PART" | tr -d " ") ))
 done
 if [ "$TOTAL" -ne "$SIZE" ]; then
   echo "SIZE MISMATCH: got $TOTAL want $SIZE (re-run to resume)"; exit 1
 fi
 
 cat "$PART_DIR"/part.{0..11} > "$OUT"
-echo "OK $(stat -c%s "$OUT") bytes -> $OUT"
+echo "OK $(wc -c < "$OUT" | tr -d " ") bytes -> $OUT"

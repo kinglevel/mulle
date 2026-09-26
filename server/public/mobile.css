@@ -49,11 +49,30 @@ body {
 
 #player canvas {
 	display: block;
-	margin: auto;
+	/* Phaser's pageAlign writes inline margin-left/top that assume a block
+	   parent; in this flex container they pin the canvas to the left edge. */
+	margin: auto !important;
 	touch-action: none;
 	/* Keep the 1997 pixel art crisp when scaled up on a high-DPI screen. */
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
+}
+
+/* Upstream scenes drop plain <input>s (player name, car name) into #player at
+   640x480 canvas coordinates. mobile.js re-anchors them onto the scaled
+   canvas; here they must opt back out of the page-wide user-select: none,
+   which in WebKit also blocks typing. */
+#player input {
+	z-index: 2;
+	transform-origin: 0 0;
+	/* Upstream leaves colour to the UA default, which a dark colour scheme
+	   turns white — invisible on the white name sign. */
+	color: #000;
+	caret-color: #000;
+	outline: none;
+	-webkit-user-select: text;
+	user-select: text;
+	touch-action: manipulation;
 }
 
 /* The upstream debug/settings panels are desktop-only clutter. */

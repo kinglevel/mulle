@@ -66,12 +66,80 @@
 
   function refreshScale () {
     if (game.scale) game.scale.refresh()
+    layoutInputs()
   }
 
   function updateRotateHint () {
     var portrait = window.innerHeight > window.innerWidth
     rotateHint.classList.toggle('armed', isTouch && started && portrait)
   }
+
+  /*
+   * Audio unlock. Phaser boots on a setTimeout after game.setup(), so its
+   * AudioContext is created outside the Spil tap and starts 'suspended' —
+   * and Phaser CE only auto-unlocks it for touch devices. Chrome lets us
+   * resume it once the page has had a gesture; Safari wants the resume inside
+   * one, hence the listeners as well.
+   */
+  function resumeAudio () {
+    var ctx = game.sound && game.sound.context
+    if (ctx && ctx.state === 'suspended' && ctx.resume) ctx.resume().catch(function () {})
+  }
+
+  ;['pointerdown', 'touchend', 'keydown'].forEach(function (type) {
+    document.addEventListener(type, resumeAudio, true)
+  })
+
+  function resumeAudioWhenBooted () {
+    var tries = 0
+    var timer = setInterval(function () {
+      var ctx = game.sound && game.sound.context
+      if (ctx || ++tries > 200) {
+        clearInterval(timer)
+        resumeAudio()
+      }
+    }, 25)
+  }
+
+  /*
+   * Upstream scenes append plain <input>s to #player positioned in 640x480
+   * canvas pixels (the name sign on the menu, the car name in the album).
+   * The canvas here is scaled and centred, so map each one onto it: keep its
+   * original top/left, then offset by the canvas position and scale it.
+   */
+  function layoutInputs () {
+    var canvas = player.querySelector('canvas')
+    if (!canvas) return
+    var s = canvas.clientWidth / game.width
+    var cx = canvas.offsetLeft
+    var cy = canvas.offsetTop
+    var inputs = player.querySelectorAll('input')
+    for (var i = 0; i < inputs.length; i++) {
+      var el = inputs[i]
+      if (!el.dataset.gameX) {
+        el.dataset.gameX = parseFloat(el.style.left) || 0
+        el.dataset.gameY = parseFloat(el.style.top) || 0
+      }
+      el.style.left = (cx + el.dataset.gameX * s) + 'px'
+      el.style.top = (cy + el.dataset.gameY * s) + 'px'
+      el.style.transform = 'scale(' + s + ')'
+    }
+  }
+
+  new MutationObserver(function (records) {
+    for (var i = 0; i < records.length; i++) {
+      for (var j = 0; j < records[i].addedNodes.length; j++) {
+        var node = records[i].addedNodes[j]
+        if (node.tagName === 'INPUT') {
+          layoutInputs()
+          // Pop the on-screen keyboard straight onto the name sign; desktop
+          // only, since phones refuse focus() outside a gesture anyway.
+          if (!isTouch && node.type !== 'file') node.focus()
+          return
+        }
+      }
+    }
+  }).observe(player, { childList: true })
 
   var started = false
 
@@ -86,6 +154,7 @@
     game.scale.pageAlignVertically = true
 
     game.setup()
+    resumeAudioWhenBooted()
 
     // Phaser reads the parent size on boot; the overlay teardown and any
     // fullscreen transition can both change it a frame later.
@@ -143,6 +212,7 @@
   // Suppress the double-tap-to-zoom delay inside the canvas area.
   var lastTouchEnd = 0
   player.addEventListener('touchend', function (e) {
+    if (e.target.tagName === 'INPUT') return
     var now = Date.now()
     if (now - lastTouchEnd < 300) e.preventDefault()
     lastTouchEnd = now

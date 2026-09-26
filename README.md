@@ -17,8 +17,11 @@ mulle/
 │   ├── server.js           Express server
 │   └── public/             mobile shell (index.html, mobile.css, mobile.js, manifest)
 ├── scripts/
+│   ├── install.sh          one-time prerequisites (tools, venv, npm, ISO)
 │   ├── build.sh            one-shot build of everything in vendor/mulle.js
 │   └── fetch_iso.sh        parallel downloader for the archive.org ISO
+├── patches/mulle.js/       local fixes to upstream, applied by build.sh during
+│                           the build and reverted after (submodule stays clean)
 ├── vendor/
 │   └── mulle.js/           upstream mulle.js (git submodule, engine + build scripts)
 │       ├── iso/            mullebil_<lang>.iso — the game CD image   (not committed)
@@ -38,6 +41,18 @@ cd mulle
 # or, in an existing clone:
 git submodule update --init
 ```
+
+## Install (required once, before building/running)
+
+```sh
+scripts/install.sh
+```
+
+Installs/checks system tools (node, python3, and an ffmpeg with libvorbis — on
+macOS that's Homebrew's `ffmpeg-full`, since plain `ffmpeg` lacks it), inits the
+mulle.js submodule, creates the Python venv with the build dependencies, runs
+`npm install` for both the engine and the server, and fetches the `da` ISO if
+missing. Safe to re-run. Then build (below) and run.
 
 ## Running
 

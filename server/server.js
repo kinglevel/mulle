@@ -32,15 +32,13 @@ app.disable('x-powered-by')
 // automatically. This is the single biggest win over a mobile connection.
 app.use(compression({ level: 6 }))
 
-// Game data never changes once built, so let phones cache it hard. The HTML
-// shell must not be cached, otherwise edits to it never reach the device.
+// Asset URLs aren't content-hashed, so a rebuild keeps the same names. Let
+// browsers keep everything but revalidate by ETag: an unchanged file costs a
+// 304, and a rebuilt one is picked up on the next load. The HTML shell must
+// not be cached at all, otherwise edits to it never reach the device.
 const immutable = {
-  maxAge: '30d',
-  immutable: true,
   setHeaders (res, filePath) {
-    if (filePath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'no-store')
-    }
+    res.setHeader('Cache-Control', filePath.endsWith('.html') ? 'no-store' : 'no-cache')
   }
 }
 
