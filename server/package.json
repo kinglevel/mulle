@@ -1,0 +1,15 @@
+{
+  "name": "mulle-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Node.js host for mulle.js (Byg bil med Mulle Meck), tuned for mobile phones",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "compression": "^1.8.0",
+    "express": "^4.21.2",
+    "qrcode-terminal": "^0.12.0"
+  }
+}

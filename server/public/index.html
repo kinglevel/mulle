@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-title" content="Mulle Meck" />
+	<meta name="theme-color" content="#000000" />
+
+	<title>Byg bil med Mulle Meck</title>
+
+	<link rel="manifest" href="/manifest.webmanifest" />
+	<link rel="apple-touch-icon" href="/loading.png" />
+
+	<!-- Upstream styles first, then the mobile overrides on top. -->
+	<link href="/style.css" rel="stylesheet" />
+	<link href="/mobile.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<div id="player"></div>
+	</div>
+
+	<!-- Tapping this is what unlocks audio, fullscreen and orientation lock:
+	     all three need a real user gesture, so the game boots from here. -->
+	<div id="boot-overlay">
+		<div class="boot-inner">
+			<h1>Byg bil med<br />Mulle Meck</h1>
+			<button id="boot-button" type="button">Spil</button>
+			<p class="boot-hint">Vend telefonen på tværs for bedste billede</p>
+		</div>
+	</div>
+
+	<div id="rotate-hint">
+		<div>
+			<div class="rotate-icon">⟳</div>
+			<p>Vend telefonen på tværs</p>
+		</div>
+	</div>
+
+	<button id="fs-button" type="button" title="Fullscreen" hidden>⛶</button>
+
+	<script src="/phaser.min.js"></script>
+	<script src="/bundle.js"></script>
+	<script src="/mobile.js"></script>
+
+</body>
+
+</html>

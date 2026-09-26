@@ -1,0 +1,4 @@
+[submodule "vendor/mulle.js"]
+	path = vendor/mulle.js
+	url = https://github.com/datagutten/mulle.js.git
+	ignore = dirty

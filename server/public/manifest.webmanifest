@@ -1,0 +1,18 @@
+{
+  "name": "Byg bil med Mulle Meck",
+  "short_name": "Mulle Meck",
+  "description": "mulle.js — Byg bil med Mulle Meck i browseren",
+  "start_url": "/",
+  "scope": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#10121f",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/loading.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

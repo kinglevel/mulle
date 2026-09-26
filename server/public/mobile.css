@@ -1,0 +1,163 @@
+/*
+ * Mobile overrides for mulle.js.
+ *
+ * Upstream style.css pins #player to a literal 640x480 box and centres
+ * #wrapper with a 40px margin. On a phone that leaves the canvas either
+ * cropped or postage-stamp sized. Here the wrapper becomes the full viewport
+ * and Phaser's SHOW_ALL scale mode letterboxes the 4:3 canvas inside it.
+ */
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: #000;
+	overflow: hidden;
+	/* Stop pull-to-refresh and rubber-band scrolling from fighting drag input. */
+	overscroll-behavior: none;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#wrapper {
+	max-width: none;
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	/* dvh tracks the collapsing mobile browser chrome; vh above is the fallback. */
+	height: 100dvh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#player {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	height: 100dvh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* Without this the browser claims drags for scroll/zoom before Phaser
+	   ever sees them, which breaks dragging car parts onto the chassis. */
+	touch-action: none;
+}
+
+#player canvas {
+	display: block;
+	margin: auto;
+	touch-action: none;
+	/* Keep the 1997 pixel art crisp when scaled up on a high-DPI screen. */
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+/* The upstream debug/settings panels are desktop-only clutter. */
+#settings,
+#debug,
+#cheats {
+	display: none;
+}
+
+/* ---- boot overlay ---------------------------------------------------- */
+
+#boot-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 30;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #10121f;
+	color: #f2f2f2;
+	font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+	text-align: center;
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+#boot-overlay.hidden {
+	display: none;
+}
+
+#boot-overlay h1 {
+	margin: 0 0 1.5rem;
+	font-size: clamp(1.5rem, 7vw, 2.75rem);
+	line-height: 1.15;
+	font-weight: 700;
+	letter-spacing: 0.01em;
+}
+
+#boot-button {
+	appearance: none;
+	border: none;
+	border-radius: 999px;
+	background: #ffcc33;
+	color: #201a05;
+	font: 600 clamp(1.1rem, 5vw, 1.5rem) system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+	/* Comfortably above the 44px minimum touch target. */
+	padding: 0.85em 2.6em;
+	cursor: pointer;
+}
+
+#boot-button:active {
+	background: #e6b82e;
+}
+
+.boot-hint {
+	margin-top: 1.5rem;
+	font-size: 0.85rem;
+	opacity: 0.6;
+}
+
+/* ---- rotate hint ----------------------------------------------------- */
+
+#rotate-hint {
+	display: none;
+}
+
+/* Only nag on genuinely small portrait screens — not on tablets or desktop. */
+@media (orientation: portrait) and (max-width: 820px) {
+	#rotate-hint.armed {
+		position: fixed;
+		inset: 0;
+		z-index: 20;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(16, 18, 31, 0.94);
+		color: #f2f2f2;
+		font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+		text-align: center;
+	}
+
+	.rotate-icon {
+		font-size: 3rem;
+		margin-bottom: 0.5rem;
+	}
+}
+
+/* ---- fullscreen button ----------------------------------------------- */
+
+#fs-button {
+	position: fixed;
+	z-index: 25;
+	top: calc(env(safe-area-inset-top) + 8px);
+	right: calc(env(safe-area-inset-right) + 8px);
+	width: 44px;
+	height: 44px;
+	border: none;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.15);
+	color: #fff;
+	font-size: 20px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+#fs-button[hidden] {
+	display: none;
+}
