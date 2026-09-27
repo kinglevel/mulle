@@ -1,0 +1,21 @@
+name: Idea
+description: A new curse, tool, edition, feature or improvement
+labels: [idea]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What should happen, and why it would be fun or useful.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [MULLE-HELL curse, New edition, Toolbar tool, "Start screen / shell", "Build / languages", Something else]
+  - type: textarea
+    id: how
+    attributes:
+      label: How it could work
+      description: Optional. Which scene, part or game mechanic it touches, if you know.

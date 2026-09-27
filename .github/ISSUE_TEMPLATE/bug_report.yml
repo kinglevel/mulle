@@ -1,0 +1,43 @@
+name: Bug report
+description: Something doesn't work, looks wrong or sounds wrong
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting! The more of this you can fill in, the faster it can be fixed.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: edition
+    attributes:
+      label: Edition
+      options: [Vanilla, MULLE-HELL, "Not in a game (start screen, build, server)"]
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      multiple: true
+      options: [Svenska (sv), Dansk (da), Norsk (no), Suomi (fi), Nederlands (nl), Deutsch (de), English (en)]
+  - type: input
+    id: device
+    attributes:
+      label: Browser and device
+      placeholder: e.g. Safari on iPhone 13, Chrome 130 on Windows
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console errors or build output
+      description: From the browser's developer console, or the terminal.
+      render: text
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Screenshots, which scene you were in, whether it happens every time…

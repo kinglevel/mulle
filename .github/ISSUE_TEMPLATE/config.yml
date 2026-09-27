@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: A bug in the mulle.js engine itself
+    url: https://github.com/datagutten/mulle.js/issues
+    about: If it also happens in upstream mulle.js, report it there.
