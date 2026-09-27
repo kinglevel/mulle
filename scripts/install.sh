@@ -2,12 +2,12 @@
 # One-time setup: everything that has to exist before scripts/build.sh and
 # `npm start` will work. Safe to re-run; each step skips if already done.
 #
-#   scripts/install.sh            # then: scripts/build.sh && (cd server && npm start)
+#   scripts/install.sh            # every language's ISO; then: scripts/build.sh all
+#   scripts/install.sh da sv      # just these ISOs
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 GAME="${MULLE_JS_DIR:-$ROOT/vendor/mulle.js}"
-GAME_LANG="${GAME_LANG:-da}"
 VENV="$GAME/.venv"
 
 step() { echo ""; echo "==> $*"; }
@@ -58,14 +58,8 @@ step "npm packages"
 (cd "$GAME" && npm install)
 (cd "$ROOT/server" && npm install)
 
-step "Game ISO ($GAME_LANG)"
-if [ -f "$GAME/iso/mullebil_$GAME_LANG.iso" ]; then
-  echo "present: $GAME/iso/mullebil_$GAME_LANG.iso"
-elif [ "$GAME_LANG" = da ]; then
-  "$ROOT/scripts/fetch_iso.sh"
-else
-  echo "not present; scripts/build.sh will download it"
-fi
+step "Game ISOs (${*:-all languages})"
+"$ROOT/scripts/fetch_iso.sh" "$@"
 
 echo ""
-echo "Install complete. Next: scripts/build.sh && (cd server && npm start)"
+echo "Install complete. Next: scripts/build.sh all && (cd server && npm start)"

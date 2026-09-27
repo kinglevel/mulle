@@ -1,0 +1,17 @@
+diff --git a/build_scripts/build.py b/build_scripts/build.py
+index 417fd1f..feb0bdc 100644
+--- a/build_scripts/build.py
++++ b/build_scripts/build.py
+@@ -160,6 +160,12 @@ class Build:
+                         dirs_exist_ok=True)
+ 
+     def download_game(self, show_progress=True):
++        # An ISO fetched some other way (the host's scripts/fetch_iso.sh) wins,
++        # which is also the only way in for languages without a URL below.
++        local_file = os.path.join(self.iso_folder, 'mullebil_%s.iso' % self.language)
++        if os.path.exists(local_file):
++            return local_file
++
+         if self.language == 'no':
+             url = 'https://archive.org/download/bygg-biler-med-mulle-mekk/Bygg%20biler%20med%20Mulle%20Mekk.iso'
+         elif self.language == 'sv':

@@ -1,0 +1,87 @@
+English asset rules for the only English release on archive.org (Gary Gadget:
+Building Cars, Viva Media 2006), which scripts/fetch_iso.sh remasters.
+
+On that disc 92.DXR follows the other translations' numbering and 13.DXR and
+88.DXR the Swedish one, so upstream's en: rules for them (made against some
+other English edition) pick the wrong members. Checked by member name against
+the Swedish CD, which also turned up two ranges upstream has no rule for:
+the horns in 05.DXR and the last car-part voices in CDDATA.CXT, shifted by one.
+
+diff --git a/build_scripts/assets/assets.yml b/build_scripts/assets/assets.yml
+index fcf7cdd..ef0f610 100644
+--- a/build_scripts/assets/assets.yml
++++ b/build_scripts/assets/assets.yml
+@@ -30,6 +30,13 @@ carparts:
+         - [ 838, 917 ]
+         - [ 966, 1018 ]
+         - [ 1213, 1390 ]  # Audio
++      translations:
++        voice_20d168:
++          source: 1377
++          en: 1389
++        voices_20d169:
++          source: [ 1378, 1389 ]
++          en: [ 1377, 1388 ]
+ 
+ carshow:
+   94.DXR:
+@@ -123,6 +130,9 @@ driving:
+         voices:
+           source: [ 233,249 ]
+           en: [ 325, 341 ]
++        horns:
++          source: [ 269, 275 ]
++          en: [ 225, 231 ]
+   CDDATA.CXT:
+     Standalone:
+       members:
+@@ -150,33 +160,26 @@ figgeferrum:
+       translations:
+         audio1:
+           source: [ 181,182 ]
+-          en: [ 182, 183 ]
+           other: [ 177, 178 ]
+         audio2:
+           source: [ 199, 205 ]
+-          en: [ 200, 206 ]
+           other: [ 195, 201 ]
+         background:
+           source: 1
+-          en: 208
+           other: 203
+         can:
+           source: 11
+-          en: 12
+           other: 7
+         dog:
+           source: [ 40, 44 ]
+-          en: [ 41, 45 ]
+           other: [ 36, 40 ]
+ 
+         dogAnimChart:
+           source: 37
+-          en: 38
+           other: 33
+ 
+         neighbor:
+           source: [ 16, 27 ]
+-          en: [ 17, 28 ]
+           other: [ 12, 23 ]
+ 
+ fileBrowser:
+@@ -191,7 +194,6 @@ fileBrowser:
+       translations:
+         browser:
+           source: [ 17,32 ]
+-          en: [ 18,33 ]
+ 
+ garage:
+   00.CXT:
+@@ -521,7 +523,6 @@ sturestortand:
+       translations:
+         all:
+           source: [ 16,204 ]
+-          en: [ 17,205 ]
+ ui:
+   00.CXT:
+     Standalone:

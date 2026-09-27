@@ -1,0 +1,82 @@
+<!doctype html>
+<!-- Template: server.js fills in the {{placeholders}} for each language and
+     serves it at /<lang>/. Game files load relative to that, shell files
+     (mobile.css/js, manifest) from the root. -->
+<html lang="{{lang}}">
+
+<head>
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="apple-mobile-web-app-title" content="Mulle Meck" />
+	<meta name="theme-color" content="#000000" />
+	<!-- Opt out of Dark Reader & co: it recolours the game's DOM inputs
+	     (white text on the white name sign) and tints the pixel art. -->
+	<meta name="darkreader-lock" />
+	<meta name="color-scheme" content="only light" />
+
+	<title>{{title}}</title>
+
+	<link rel="manifest" href="/manifest.webmanifest" />
+	<link rel="apple-touch-icon" href="loading.png" />
+
+	<!-- Upstream styles first, then the mobile overrides on top. -->
+	<link href="style.css" rel="stylesheet" />
+	<link href="/mobile.css" rel="stylesheet" />
+
+	<script>window.MULLE_SHELL = {{shell}}</script>
+
+</head>
+
+<body>
+
+	<!-- Shown once the game starts; tools register themselves via
+	     MulleToolbar (toolbar.js). -->
+	<header id="toolbar" hidden>
+		<div class="toolbar-title"></div>
+		<div class="toolbar-tools" role="toolbar"></div>
+	</header>
+	<div id="toolbar-panel" hidden>
+		<div class="panel-body"></div>
+		<!-- Upstream garage/yard/world scenes write cheat buttons in here and
+		     crash if it's missing; the Cheats tool shows it. -->
+		<div id="cheats" hidden></div>
+	</div>
+
+	<div id="wrapper">
+		<div id="player"></div>
+	</div>
+
+	<!-- The start screen (menu.js): edition, then language and options, then
+	     Play. Tapping Play is what unlocks audio, fullscreen and orientation
+	     lock: all three need a real user gesture, so the game boots from it. -->
+	<div id="boot-overlay">
+		<div class="boot-inner">
+			<h1>{{title}}</h1>
+			<noscript><p class="boot-hint">JavaScript is required.</p></noscript>
+		</div>
+	</div>
+
+	<div id="rotate-hint">
+		<div>
+			<div class="rotate-icon">⟳</div>
+			<p>{{rotate}}</p>
+		</div>
+	</div>
+
+	<script src="phaser.min.js"></script>
+	<script src="bundle.js"></script>
+	<script src="/toolbar.js"></script>
+	<script src="/cheats.js"></script>
+	<script src="/editions.js"></script>
+	<script src="/editions/hardcore.js"></script>
+	<script src="/mobile.js"></script>
+	<script src="/menu.js"></script>
+
+</body>
+
+</html>

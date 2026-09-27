@@ -7,6 +7,23 @@
  * and Phaser's SHOW_ALL scale mode letterboxes the 4:3 canvas inside it.
  */
 
+:root {
+	--shell-bg: #10121f;
+	--shell-fg: #f2f2f2;
+	--shell-muted: rgba(242, 242, 242, 0.65);
+	--shell-line: rgba(255, 255, 255, 0.22);
+	--shell-accent: #ffcc33;
+	--shell-accent-ink: #201a05;
+	--shell-danger: #ff5a4f;
+	--shell-font: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+	/* Height of the in-game toolbar; 0 until the game starts. */
+	--toolbar-h: 0px;
+}
+
+body.in-game {
+	--toolbar-h: calc(40px + env(safe-area-inset-top));
+}
+
 html,
 body {
 	height: 100%;
@@ -26,9 +43,10 @@ body {
 	max-width: none;
 	margin: 0;
 	width: 100vw;
-	height: 100vh;
+	height: calc(100vh - var(--toolbar-h));
 	/* dvh tracks the collapsing mobile browser chrome; vh above is the fallback. */
-	height: 100dvh;
+	height: calc(100dvh - var(--toolbar-h));
+	margin-top: var(--toolbar-h);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -37,8 +55,7 @@ body {
 #player {
 	position: relative;
 	width: 100vw;
-	height: 100vh;
-	height: 100dvh;
+	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -75,10 +92,10 @@ body {
 	touch-action: manipulation;
 }
 
-/* The upstream debug/settings panels are desktop-only clutter. */
+/* The upstream debug/settings panels are desktop-only clutter; #cheats is
+   shown by the toolbar's Cheats panel instead. */
 #settings,
-#debug,
-#cheats {
+#debug {
 	display: none;
 }
 
@@ -91,11 +108,18 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: #10121f;
-	color: #f2f2f2;
-	font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+	background: var(--shell-bg);
+	color: var(--shell-fg);
+	font-family: var(--shell-font);
 	text-align: center;
 	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+	/* A landscape phone is short; let the language list scroll rather than clip. */
+	overflow-y: auto;
+}
+
+#boot-overlay .boot-inner {
+	margin: auto;
+	padding: 1rem 0;
 }
 
 #boot-overlay.hidden {
@@ -132,6 +156,180 @@ body {
 	opacity: 0.6;
 }
 
+/* ---- start screen ---------------------------------------------------- */
+
+.boot-step {
+	width: min(34rem, calc(100vw - 32px));
+	margin: 0 auto;
+}
+
+.boot-subtitle,
+.setup-label {
+	margin: 0 0 0.75rem;
+	font-size: 0.8rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--shell-muted);
+}
+
+.edition-list {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.edition-card {
+	appearance: none;
+	display: grid;
+	gap: 0.25rem;
+	justify-items: start;
+	width: 100%;
+	padding: 1rem 1.1rem;
+	border: 1px solid var(--shell-line);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.04);
+	color: var(--shell-fg);
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+
+.edition-card:hover,
+.edition-card:focus-visible {
+	border-color: var(--shell-accent);
+	outline: none;
+}
+
+.edition-card[aria-current] {
+	border-color: var(--shell-accent);
+	background: rgba(255, 204, 51, 0.08);
+}
+
+.edition-name {
+	font-size: 1.15rem;
+	font-weight: 700;
+}
+
+.edition-card[data-edition="hardcore"] .edition-name {
+	color: var(--shell-danger);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.edition-hint {
+	font-size: 0.9rem;
+	color: var(--shell-muted);
+}
+
+.edition-badge {
+	margin-top: 0.35rem;
+	padding: 0.15rem 0.55rem;
+	border: 1px solid currentColor;
+	border-radius: 999px;
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--shell-accent);
+}
+
+.setup-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 1.25rem;
+}
+
+.boot-back {
+	appearance: none;
+	min-height: 44px;
+	padding: 0 0.9rem;
+	border: 1px solid var(--shell-line);
+	border-radius: 999px;
+	background: none;
+	color: var(--shell-fg);
+	font: inherit;
+	font-size: 0.9rem;
+	cursor: pointer;
+}
+
+.setup-edition {
+	font-weight: 700;
+}
+
+.setup-section {
+	margin-bottom: 1.25rem;
+	text-align: left;
+}
+
+.lang-picker {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.lang-picker a {
+	/* 44px minimum touch target. */
+	min-height: 44px;
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	padding: 0 1rem;
+	border: 1px solid var(--shell-line);
+	border-radius: 999px;
+	color: var(--shell-fg);
+	font-size: 0.95rem;
+	text-decoration: none;
+}
+
+.lang-picker a:hover,
+.lang-picker a:focus-visible,
+.boot-back:hover,
+.boot-back:focus-visible {
+	border-color: var(--shell-accent);
+	outline: none;
+}
+
+.lang-picker a[aria-current] {
+	background: rgba(255, 204, 51, 0.15);
+	border-color: var(--shell-accent);
+	color: var(--shell-accent);
+	font-weight: 600;
+}
+
+.option {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+	padding: 0.75rem 0.9rem;
+	border: 1px solid var(--shell-line);
+	border-radius: 12px;
+	cursor: pointer;
+}
+
+.option input {
+	width: 22px;
+	height: 22px;
+	margin: 0.1rem 0 0;
+	flex: none;
+	accent-color: var(--shell-accent);
+}
+
+.option-text {
+	display: grid;
+	gap: 0.15rem;
+}
+
+.option-name {
+	font-weight: 600;
+}
+
+.option-hint {
+	font-size: 0.85rem;
+	color: var(--shell-muted);
+}
+
 /* ---- rotate hint ----------------------------------------------------- */
 
 #rotate-hint {
@@ -159,24 +357,230 @@ body {
 	}
 }
 
-/* ---- fullscreen button ----------------------------------------------- */
+/* ---- toolbar -------------------------------------------------------- */
 
-#fs-button {
+#toolbar {
 	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	z-index: 25;
-	top: calc(env(safe-area-inset-top) + 8px);
-	right: calc(env(safe-area-inset-right) + 8px);
-	width: 44px;
-	height: 44px;
-	border: none;
+	box-sizing: border-box;
+	height: var(--toolbar-h);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: env(safe-area-inset-top) calc(env(safe-area-inset-right) + 6px) 0 calc(env(safe-area-inset-left) + 10px);
+	background: var(--shell-bg);
+	border-bottom: 1px solid var(--shell-line);
+	color: var(--shell-fg);
+	font-family: var(--shell-font);
+}
+
+#toolbar[hidden] {
+	display: none;
+}
+
+.toolbar-title {
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--shell-muted);
+}
+
+.toolbar-tools {
+	display: flex;
+	gap: 4px;
+}
+
+.tool {
+	appearance: none;
+	height: 32px;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0 0.7rem;
+	border: 1px solid transparent;
 	border-radius: 8px;
-	background: rgba(255, 255, 255, 0.15);
-	color: #fff;
-	font-size: 20px;
-	line-height: 1;
+	background: rgba(255, 255, 255, 0.08);
+	color: var(--shell-fg);
+	font: 500 0.85rem var(--shell-font);
 	cursor: pointer;
 }
 
-#fs-button[hidden] {
+.tool:hover,
+.tool:focus-visible {
+	border-color: var(--shell-line);
+	outline: none;
+}
+
+.tool[aria-expanded="true"] {
+	background: rgba(255, 204, 51, 0.18);
+	border-color: var(--shell-accent);
+	color: var(--shell-accent);
+}
+
+/* Short on width (a phone in landscape still is): icons only. */
+@media (max-width: 720px) {
+	.tool .tool-icon + .tool-label {
+		display: none;
+	}
+}
+
+#toolbar-panel {
+	position: fixed;
+	top: var(--toolbar-h);
+	right: 0;
+	z-index: 24;
+	box-sizing: border-box;
+	width: min(28rem, 100vw);
+	max-height: calc(70dvh - var(--toolbar-h));
+	overflow-y: auto;
+	padding: 0.75rem calc(env(safe-area-inset-right) + 0.75rem) 0.75rem 0.75rem;
+	background: rgba(16, 18, 31, 0.96);
+	border: 1px solid var(--shell-line);
+	border-top: none;
+	border-radius: 0 0 0 12px;
+	color: var(--shell-fg);
+	font-family: var(--shell-font);
+	font-size: 0.9rem;
+}
+
+#toolbar-panel[hidden],
+#toolbar-panel [hidden] {
 	display: none;
+}
+
+.panel-empty {
+	margin: 0.25rem 0;
+	color: var(--shell-muted);
+}
+
+/* Upstream's cheat buttons: spawn parts, jump to scenes and map squares. */
+#cheats {
+	margin: 0;
+}
+
+#cheats .button {
+	margin: 2px;
+	min-height: 32px;
+	padding: 0 0.6rem;
+	border: 1px solid var(--shell-line);
+	border-radius: 6px;
+	background: rgba(255, 255, 255, 0.08);
+	color: var(--shell-fg);
+	font: 0.8rem var(--shell-font);
+	cursor: pointer;
+}
+
+/* Garage part cheats, grouped by cheats.js. */
+.cheat-search {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 40px;
+	margin-bottom: 0.5rem;
+	padding: 0 0.75rem;
+	border: 1px solid var(--shell-line);
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--shell-fg);
+	font: 0.9rem var(--shell-font);
+	/* The page opts out of text selection; typing needs it back. */
+	-webkit-user-select: text;
+	user-select: text;
+}
+
+.cheat-actions {
+	margin-bottom: 0.5rem;
+}
+
+.cheat-group {
+	border-top: 1px solid var(--shell-line);
+}
+
+.cheat-group summary {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-height: 40px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.cheat-count {
+	margin-left: auto;
+	padding: 0 0.5rem;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.1);
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--shell-muted);
+}
+
+.cheat-list {
+	padding-bottom: 0.5rem;
+}
+
+#cheats .button.owned {
+	border-color: var(--shell-accent);
+	color: var(--shell-accent);
+}
+
+/* ---- toasts -------------------------------------------------------- */
+
+#toasts {
+	position: fixed;
+	top: calc(var(--toolbar-h) + 10px);
+	left: 50%;
+	z-index: 26;
+	transform: translateX(-50%);
+	display: grid;
+	gap: 6px;
+	width: min(30rem, calc(100vw - 32px));
+	pointer-events: none;
+}
+
+.toast {
+	padding: 0.6rem 0.9rem;
+	border: 1px solid var(--shell-line);
+	border-radius: 10px;
+	background: rgba(16, 18, 31, 0.94);
+	color: var(--shell-fg);
+	font: 600 0.9rem var(--shell-font);
+	text-align: center;
+	transition: opacity 0.5s, transform 0.5s;
+}
+
+.toast.leaving {
+	opacity: 0;
+	transform: translateY(-6px);
+}
+
+/* ---- MULLE-HELL ------------------------------------------------------ */
+
+body.hell #toolbar {
+	background: linear-gradient(90deg, #2a0707, var(--shell-bg) 60%);
+	border-bottom-color: rgba(255, 90, 79, 0.5);
+}
+
+body.hell .toolbar-title {
+	color: var(--shell-danger);
+}
+
+body.hell .toast {
+	border-color: rgba(255, 90, 79, 0.6);
+}
+
+.hell-night {
+	position: absolute;
+	z-index: 1;
+	pointer-events: none;
+}
+
+.hell-curse {
+	margin-top: 0.5rem;
 }

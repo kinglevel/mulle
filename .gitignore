@@ -23,3 +23,6 @@ Thumbs.db
 .idea/
 .vscode/
 __pycache__/
+
+# Per-language builds staged by scripts/build.sh (derived from the ISOs)
+/games/

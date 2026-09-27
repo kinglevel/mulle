@@ -1,0 +1,4108 @@
+{
+ "parts": [
+  {
+   "id": 1,
+   "name": "chassis",
+   "category": "chassis",
+   "stats": {
+    "weight": 4
+   },
+   "slots": [],
+   "voice": "20d999v0",
+   "variants": []
+  },
+  {
+   "id": 2,
+   "name": "moped engine",
+   "category": "engines",
+   "stats": {
+    "weight": 2,
+    "speed": 2,
+    "fuelConsumption": 1,
+    "strength": 1,
+    "engineType": 4
+   },
+   "slots": [
+    "#a16",
+    "#a6"
+   ],
+   "voice": "20d158v0",
+   "variants": [
+    {
+     "id": 3,
+     "stats": {
+      "weight": 2,
+      "speed": 2,
+      "fuelConsumption": 1,
+      "strength": 1,
+      "engineType": 4
+     },
+     "slots": [
+      "#a16"
+     ]
+    },
+    {
+     "id": 4,
+     "stats": {
+      "weight": 2,
+      "speed": 2,
+      "fuelConsumption": 1,
+      "strength": 1,
+      "engineType": 4
+     },
+     "slots": [
+      "#a6"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "name": "balcony",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "loadCapacity": 5,
+    "funnyFactor": 2,
+    "color": 6
+   },
+   "slots": [
+    "#a15",
+    "#a16",
+    "#a17",
+    "#b4"
+   ],
+   "voice": "20d154v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 6,
+   "name": "med engine",
+   "category": "engines",
+   "stats": {
+    "weight": 3,
+    "speed": 3,
+    "fuelConsumption": 2,
+    "strength": 2,
+    "engineType": 5
+   },
+   "slots": [
+    "#a6",
+    "#a16"
+   ],
+   "voice": "20d035v0",
+   "variants": [
+    {
+     "id": 7,
+     "stats": {
+      "weight": 3,
+      "speed": 3,
+      "fuelConsumption": 2,
+      "strength": 2,
+      "engineType": 5
+     },
+     "slots": [
+      "#a6"
+     ]
+    },
+    {
+     "id": 8,
+     "stats": {
+      "weight": 3,
+      "speed": 3,
+      "fuelConsumption": 2,
+      "strength": 2,
+      "engineType": 5
+     },
+     "slots": [
+      "#a16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "name": "v8 engine",
+   "category": "engines",
+   "stats": {
+    "weight": 4,
+    "speed": 4,
+    "fuelConsumption": 3,
+    "strength": 4,
+    "engineType": 7
+   },
+   "slots": [
+    "#a6",
+    "#a16"
+   ],
+   "voice": "20d046v0",
+   "variants": [
+    {
+     "id": 10,
+     "stats": {
+      "weight": 4,
+      "speed": 4,
+      "fuelConsumption": 3,
+      "strength": 4,
+      "engineType": 7
+     },
+     "slots": [
+      "#a6"
+     ]
+    },
+    {
+     "id": 11,
+     "stats": {
+      "weight": 4,
+      "speed": 4,
+      "fuelConsumption": 3,
+      "strength": 4,
+      "engineType": 7
+     },
+     "slots": [
+      "#a16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "name": "red seat",
+   "category": "seats",
+   "stats": {
+    "weight": 3,
+    "comfort": 3
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d110v0",
+   "variants": []
+  },
+  {
+   "id": 13,
+   "name": "rusty truck cab",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 6
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d038v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 14,
+   "name": "wooden box",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "loadCapacity": 5,
+    "funnyFactor": 2,
+    "color": 6
+   },
+   "slots": [
+    "#b1",
+    "#a5",
+    "#a6",
+    "#a7",
+    "#a15",
+    "#a16",
+    "#a17",
+    "#b4"
+   ],
+   "voice": "20d126v0",
+   "variants": [
+    {
+     "id": 15,
+     "stats": {
+      "weight": 4,
+      "loadCapacity": 5,
+      "funnyFactor": 2,
+      "color": 6
+     },
+     "slots": [
+      "#b1",
+      "#a5",
+      "#a6",
+      "#a7"
+     ]
+    },
+    {
+     "id": 16,
+     "stats": {
+      "weight": 4,
+      "loadCapacity": 5,
+      "funnyFactor": 1,
+      "color": 5
+     },
+     "slots": [
+      "#a15",
+      "#a16",
+      "#a17",
+      "#b4"
+     ]
+    }
+   ],
+   "section": "front"
+  },
+  {
+   "id": 17,
+   "name": "plane-front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 1,
+    "funnyFactor": 3
+   },
+   "slots": [
+    "#b1",
+    "#a3"
+   ],
+   "voice": "20d145v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 18,
+   "name": "plane-middle",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 1,
+    "funnyFactor": 2
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d150v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 19,
+   "name": "chevy-front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 5,
+    "funnyFactor": 1,
+    "lamps": 1
+   },
+   "slots": [
+    "#b1",
+    "#a3"
+   ],
+   "voice": "20d043v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 20,
+   "name": "chevy-middle",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 4,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d117v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 21,
+   "name": "chevy-back",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 4,
+    "loadCapacity": 2
+   },
+   "slots": [
+    "#b4"
+   ],
+   "voice": "20d043v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 22,
+   "name": "tractor front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 3,
+    "color": 4,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d122v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 23,
+   "name": "yellow back",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 5,
+    "loadCapacity": 2
+   },
+   "slots": [
+    "#b4"
+   ],
+   "voice": "20d142v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 24,
+   "name": "vw blue front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 3,
+    "color": 6,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d041v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 25,
+   "name": "racer front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 3,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d107v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 26,
+   "name": "greenhouse",
+   "category": "bodywork",
+   "stats": {
+    "weight": 3,
+    "color": 1
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d044v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 27,
+   "name": "racer middle",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 3
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d165v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 28,
+   "name": "racer back",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 3,
+    "loadCapacity": 2
+   },
+   "slots": [
+    "#b4"
+   ],
+   "voice": "20d099v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 29,
+   "name": "yellow middle",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 5
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d120v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 30,
+   "name": "yellow front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 5,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d135v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 31,
+   "name": "shack",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "color": 3
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d036v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 32,
+   "name": "heli front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 1
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d042v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 33,
+   "name": "tractor shovel",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 5,
+    "funnyFactor": 2
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d153v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 35,
+   "name": "ticket booth",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "loadCapacity": 5,
+    "funnyFactor": 2,
+    "color": 3
+   },
+   "slots": [
+    "#b4",
+    "#b2"
+   ],
+   "voice": "20d152v0",
+   "variants": [
+    {
+     "id": 36,
+     "stats": {
+      "weight": 5,
+      "loadCapacity": 5,
+      "funnyFactor": 2,
+      "color": 3
+     },
+     "slots": [
+      "#b4"
+     ]
+    },
+    {
+     "id": 37,
+     "stats": {
+      "weight": 5,
+      "funnyFactor": 2,
+      "color": 3
+     },
+     "slots": [
+      "#b2"
+     ]
+    }
+   ],
+   "section": "back"
+  },
+  {
+   "id": 38,
+   "name": "green engine",
+   "category": "engines",
+   "stats": {
+    "weight": 3,
+    "speed": 3,
+    "fuelConsumption": 2,
+    "strength": 2,
+    "engineType": 5
+   },
+   "slots": [
+    "#a6",
+    "#a16"
+   ],
+   "voice": "20d035v0",
+   "variants": [
+    {
+     "id": 39,
+     "stats": {
+      "weight": 3,
+      "speed": 3,
+      "fuelConsumption": 2,
+      "strength": 2,
+      "engineType": 5
+     },
+     "slots": [
+      "#a6"
+     ]
+    },
+    {
+     "id": 40,
+     "stats": {
+      "weight": 3,
+      "speed": 3,
+      "fuelConsumption": 2,
+      "strength": 2,
+      "engineType": 5
+     },
+     "slots": [
+      "#a16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 41,
+   "name": "handlebars",
+   "category": "steering",
+   "stats": {
+    "weight": 1,
+    "steering": 2,
+    "funnyFactor": 1,
+    "horn": 1,
+    "hornType": 1
+   },
+   "slots": [
+    "#a9"
+   ],
+   "voice": "20d129v0",
+   "variants": []
+  },
+  {
+   "id": 42,
+   "name": "desk lamp",
+   "category": "accessories",
+   "stats": {
+    "weight": 1,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d073v0",
+   "variants": []
+  },
+  {
+   "id": 43,
+   "name": "lawnmower",
+   "category": "engines",
+   "stats": {
+    "weight": 2,
+    "speed": 2,
+    "fuelConsumption": 1,
+    "strength": 2,
+    "engineType": 4
+   },
+   "slots": [
+    "#a6",
+    "#a16"
+   ],
+   "voice": "20d075v0",
+   "variants": [
+    {
+     "id": 44,
+     "stats": {
+      "weight": 2,
+      "speed": 2,
+      "fuelConsumption": 1,
+      "strength": 2,
+      "engineType": 4
+     },
+     "slots": [
+      "#a6"
+     ]
+    },
+    {
+     "id": 45,
+     "stats": {
+      "weight": 2,
+      "speed": 2,
+      "fuelConsumption": 1,
+      "strength": 2,
+      "engineType": 4
+     },
+     "slots": [
+      "#a16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 47,
+   "name": "lamp tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 1,
+    "steering": 1,
+    "durability": 1,
+    "grip": 1
+   },
+   "slots": [
+    "#a9",
+    "#a1",
+    "#a13"
+   ],
+   "voice": "20d028v0",
+   "variants": [
+    {
+     "id": 86,
+     "stats": {
+      "weight": 1,
+      "steering": 1
+     },
+     "slots": [
+      "#a9"
+     ]
+    },
+    {
+     "id": 87,
+     "stats": {
+      "weight": 1,
+      "durability": 1,
+      "grip": 1
+     },
+     "slots": [
+      "#a1"
+     ]
+    },
+    {
+     "id": 88,
+     "stats": {
+      "weight": 1,
+      "durability": 1,
+      "grip": 1
+     },
+     "slots": [
+      "#a13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 48,
+   "name": "med battery",
+   "category": "batteries",
+   "stats": {
+    "weight": 2,
+    "electricVolume": 5
+   },
+   "slots": [
+    "#a7",
+    "#a17",
+    "#a5",
+    "#a15"
+   ],
+   "voice": "20d027v0",
+   "variants": [
+    {
+     "id": 49,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 5
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 50,
+     "stats": {
+      "weight": 3,
+      "electricVolume": 5
+     },
+     "slots": [
+      "#a17"
+     ]
+    },
+    {
+     "id": 51,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 5
+     },
+     "slots": [
+      "#a5"
+     ]
+    },
+    {
+     "id": 52,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 5
+     },
+     "slots": [
+      "#a15"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 53,
+   "name": "drum tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 1,
+    "grip": 1
+   },
+   "slots": [
+    "#a1",
+    "#a13"
+   ],
+   "voice": "20d021v0",
+   "variants": [
+    {
+     "id": 62,
+     "stats": {
+      "weight": 2,
+      "durability": 1,
+      "grip": 1
+     },
+     "slots": [
+      "#a1"
+     ]
+    },
+    {
+     "id": 63,
+     "stats": {
+      "weight": 2,
+      "durability": 1,
+      "grip": 1
+     },
+     "slots": [
+      "#a13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 54,
+   "name": "ship steering wheel",
+   "category": "steering",
+   "stats": {
+    "weight": 1,
+    "steering": 3
+   },
+   "slots": [
+    "#a9"
+   ],
+   "voice": "20d023v0",
+   "variants": []
+  },
+  {
+   "id": 55,
+   "name": "big gas tank",
+   "category": "tanks",
+   "stats": {
+    "weight": 2,
+    "fuelVolume": 3
+   },
+   "slots": [
+    "#a7",
+    "#a17",
+    "#a5",
+    "#a15"
+   ],
+   "voice": "20d127v0",
+   "variants": [
+    {
+     "id": 56,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 57,
+     "stats": {
+      "weight": 3,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a17"
+     ]
+    },
+    {
+     "id": 58,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a5"
+     ]
+    },
+    {
+     "id": 59,
+     "stats": {
+      "weight": 3,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a15"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 64,
+   "name": "dashboard",
+   "category": "accessories",
+   "stats": {
+    "weight": 1
+   },
+   "slots": [
+    "#a8"
+   ],
+   "voice": "20d040v0",
+   "variants": []
+  },
+  {
+   "id": 65,
+   "name": "bell",
+   "category": "horns",
+   "stats": {
+    "weight": 1,
+    "horn": 2,
+    "hornType": 1
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d032v0",
+   "variants": []
+  },
+  {
+   "id": 66,
+   "name": "bumper bar",
+   "category": "accessories",
+   "stats": {
+    "weight": 2
+   },
+   "slots": [
+    "#a3",
+    "#a18"
+   ],
+   "voice": "20d030v0",
+   "variants": [
+    {
+     "id": 67,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a3"
+     ]
+    },
+    {
+     "id": 68,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a18"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 69,
+   "name": "wicker demijohn",
+   "category": "tanks",
+   "stats": {
+    "weight": 2,
+    "fuelVolume": 2
+   },
+   "slots": [
+    "#a17",
+    "#a15",
+    "#a5",
+    "#a7"
+   ],
+   "voice": "20d033v0",
+   "variants": [
+    {
+     "id": 70,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 2
+     },
+     "slots": [
+      "#a17"
+     ]
+    },
+    {
+     "id": 71,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 2
+     },
+     "slots": [
+      "#a15"
+     ]
+    },
+    {
+     "id": 72,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 2
+     },
+     "slots": [
+      "#a5"
+     ]
+    },
+    {
+     "id": 73,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 2
+     },
+     "slots": [
+      "#a7"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 74,
+   "name": "vacuum",
+   "category": "exhaust",
+   "stats": {
+    "weight": 1,
+    "exhaustPipe": 2
+   },
+   "slots": [
+    "#a19"
+   ],
+   "voice": "20d166v0",
+   "variants": []
+  },
+  {
+   "id": 75,
+   "name": "plane steering wheel",
+   "category": "steering",
+   "stats": {
+    "weight": 1,
+    "steering": 2
+   },
+   "slots": [
+    "#a9"
+   ],
+   "voice": "20d014v0",
+   "variants": []
+  },
+  {
+   "id": 76,
+   "name": "watering can",
+   "category": "tanks",
+   "stats": {
+    "weight": 2,
+    "fuelVolume": 1
+   },
+   "slots": [
+    "#a17",
+    "#a15",
+    "#a5",
+    "#a7"
+   ],
+   "voice": "20d016v0",
+   "variants": [
+    {
+     "id": 77,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 1
+     },
+     "slots": [
+      "#a17"
+     ]
+    },
+    {
+     "id": 78,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 1
+     },
+     "slots": [
+      "#a15"
+     ]
+    },
+    {
+     "id": 79,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 1
+     },
+     "slots": [
+      "#a5"
+     ]
+    },
+    {
+     "id": 80,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 1
+     },
+     "slots": [
+      "#a7"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 81,
+   "name": "small battery",
+   "category": "batteries",
+   "stats": {
+    "weight": 2,
+    "electricVolume": 2
+   },
+   "slots": [
+    "#a7",
+    "#a17",
+    "#a15",
+    "#a5"
+   ],
+   "voice": "20d138v0",
+   "variants": [
+    {
+     "id": 82,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 2
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 83,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 2
+     },
+     "slots": [
+      "#a17"
+     ]
+    },
+    {
+     "id": 84,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 2
+     },
+     "slots": [
+      "#a15"
+     ]
+    },
+    {
+     "id": 85,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 2
+     },
+     "slots": [
+      "#a5"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 89,
+   "name": "signal horn",
+   "category": "horns",
+   "stats": {
+    "weight": 1,
+    "horn": 2,
+    "hornType": 2
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d066v0",
+   "variants": []
+  },
+  {
+   "id": 90,
+   "name": "fox-tail antenna",
+   "category": "accessories",
+   "stats": {
+    "weight": 1
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d097v0",
+   "variants": []
+  },
+  {
+   "id": 91,
+   "name": "solar panel",
+   "category": "accessories",
+   "stats": {
+    "weight": 4,
+    "funnyFactor": 3,
+    "electricConsumption": -3
+   },
+   "slots": [
+    "#a16"
+   ],
+   "voice": "20d063v0",
+   "variants": []
+  },
+  {
+   "id": 92,
+   "name": "F1 steering wheel",
+   "category": "steering",
+   "stats": {
+    "weight": 1,
+    "steering": 5
+   },
+   "slots": [
+    "#a9"
+   ],
+   "voice": "20d112v0",
+   "variants": []
+  },
+  {
+   "id": 93,
+   "name": "cogwheels",
+   "category": "wheels",
+   "stats": {
+    "weight": 3,
+    "durability": 5,
+    "grip": 5
+   },
+   "slots": [
+    "#a1",
+    "#a13"
+   ],
+   "voice": "20d001v0",
+   "variants": [
+    {
+     "id": 94,
+     "stats": {
+      "weight": 3,
+      "durability": 5,
+      "grip": 5
+     },
+     "slots": [
+      "#a1"
+     ]
+    },
+    {
+     "id": 95,
+     "stats": {
+      "weight": 3,
+      "durability": 5,
+      "grip": 5
+     },
+     "slots": [
+      "#a13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 96,
+   "name": "wood wheels",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 3,
+    "grip": 2
+   },
+   "slots": [
+    "#a13",
+    "#a1"
+   ],
+   "voice": "20d002v0",
+   "variants": [
+    {
+     "id": 97,
+     "stats": {
+      "weight": 2,
+      "durability": 3,
+      "grip": 2
+     },
+     "slots": [
+      "#a13"
+     ]
+    },
+    {
+     "id": 98,
+     "stats": {
+      "weight": 2,
+      "durability": 3,
+      "grip": 2
+     },
+     "slots": [
+      "#a1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 99,
+   "name": "horse carriage",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 2,
+    "color": 6,
+    "comfort": 3
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d005v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 100,
+   "name": "wooden chair",
+   "category": "seats",
+   "stats": {
+    "weight": 2,
+    "comfort": 3
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d010v0",
+   "variants": []
+  },
+  {
+   "id": 101,
+   "name": "electric engine",
+   "category": "engines",
+   "stats": {
+    "weight": 3,
+    "speed": 3,
+    "electricConsumption": 3,
+    "strength": 3,
+    "engineType": 3
+   },
+   "slots": [
+    "#a6",
+    "#a16"
+   ],
+   "voice": "20d009v0",
+   "variants": [
+    {
+     "id": 102,
+     "stats": {
+      "weight": 3,
+      "speed": 3,
+      "electricConsumption": 3,
+      "strength": 3,
+      "engineType": 3
+     },
+     "slots": [
+      "#a6"
+     ]
+    },
+    {
+     "id": 103,
+     "stats": {
+      "weight": 3,
+      "speed": 3,
+      "electricConsumption": 3,
+      "strength": 3,
+      "engineType": 3
+     },
+     "slots": [
+      "#a16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 104,
+   "name": "brakes",
+   "category": "brakes",
+   "stats": {
+    "weight": 1,
+    "brake": 3
+   },
+   "slots": [
+    "#a14",
+    "#a2"
+   ],
+   "voice": "20d076v0",
+   "variants": [
+    {
+     "id": 105,
+     "stats": {
+      "weight": 1,
+      "brake": 3
+     },
+     "slots": [
+      "#a14"
+     ]
+    },
+    {
+     "id": 106,
+     "stats": {
+      "weight": 1,
+      "brake": 3
+     },
+     "slots": [
+      "#a2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 107,
+   "name": "black battery",
+   "category": "batteries",
+   "stats": {
+    "weight": 2,
+    "electricVolume": 3
+   },
+   "slots": [
+    "#a5",
+    "#a7",
+    "#a17",
+    "#a15"
+   ],
+   "voice": "20d157v0",
+   "variants": [
+    {
+     "id": 108,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 3
+     },
+     "slots": [
+      "#a5"
+     ]
+    },
+    {
+     "id": 109,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 3
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 110,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 3
+     },
+     "slots": [
+      "#a17"
+     ]
+    },
+    {
+     "id": 111,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 3
+     },
+     "slots": [
+      "#a15"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 112,
+   "name": "orange dashboard",
+   "category": "accessories",
+   "stats": {
+    "weight": 1
+   },
+   "slots": [
+    "#a8"
+   ],
+   "voice": "20d031v0",
+   "variants": []
+  },
+  {
+   "id": 113,
+   "name": "tractor tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 4,
+    "grip": 5
+   },
+   "slots": [
+    "#a13",
+    "#a1"
+   ],
+   "voice": "20d018v0",
+   "variants": [
+    {
+     "id": 114,
+     "stats": {
+      "weight": 2,
+      "durability": 4,
+      "grip": 5
+     },
+     "slots": [
+      "#a13"
+     ]
+    },
+    {
+     "id": 115,
+     "stats": {
+      "weight": 2,
+      "durability": 4,
+      "grip": 5
+     },
+     "slots": [
+      "#a1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 116,
+   "name": "wheelbarrow tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 3,
+    "grip": 2
+   },
+   "slots": [
+    "#a1",
+    "#a13"
+   ],
+   "voice": "20d167v0",
+   "variants": [
+    {
+     "id": 117,
+     "stats": {
+      "weight": 2,
+      "durability": 3,
+      "grip": 2
+     },
+     "slots": [
+      "#a1"
+     ]
+    },
+    {
+     "id": 118,
+     "stats": {
+      "weight": 2,
+      "durability": 3,
+      "grip": 2
+     },
+     "slots": [
+      "#a13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 119,
+   "name": "green beetle front",
+   "category": "bodywork",
+   "stats": {
+    "lamps": 3,
+    "weight": 4,
+    "color": 6,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d022v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 120,
+   "name": "stool",
+   "category": "seats",
+   "stats": {
+    "weight": 1,
+    "comfort": 2
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d024v0",
+   "variants": []
+  },
+  {
+   "id": 121,
+   "name": "MC tank",
+   "category": "tanks",
+   "stats": {
+    "weight": 2,
+    "fuelVolume": 3
+   },
+   "slots": [
+    "#a15",
+    "#a5",
+    "#a7",
+    "#a17"
+   ],
+   "voice": "20d025v0",
+   "variants": [
+    {
+     "id": 122,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a15"
+     ]
+    },
+    {
+     "id": 123,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a5"
+     ]
+    },
+    {
+     "id": 124,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 125,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a17"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 126,
+   "name": "wicker basket",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "funnyFactor": 2,
+    "color": 5,
+    "loadCapacity": 5
+   },
+   "slots": [
+    "#b2",
+    "#b4"
+   ],
+   "voice": "20d004v0",
+   "variants": [
+    {
+     "id": 127,
+     "stats": {
+      "weight": 4,
+      "funnyFactor": 2,
+      "color": 5
+     },
+     "slots": [
+      "#b2"
+     ]
+    },
+    {
+     "id": 128,
+     "stats": {
+      "weight": 4,
+      "color": 5,
+      "loadCapacity": 5
+     },
+     "slots": [
+      "#b4"
+     ]
+    }
+   ],
+   "section": "middle"
+  },
+  {
+   "id": 129,
+   "name": "green striped couch",
+   "category": "seats",
+   "stats": {
+    "weight": 3,
+    "comfort": 5
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d037v0",
+   "variants": []
+  },
+  {
+   "id": 130,
+   "name": "horse carriage lights",
+   "category": "lights",
+   "stats": {
+    "weight": 2,
+    "lamps": 3
+   },
+   "slots": [
+    "#a4"
+   ],
+   "voice": "20d007v0",
+   "variants": []
+  },
+  {
+   "id": 131,
+   "name": "lights",
+   "category": "lights",
+   "stats": {
+    "weight": 2,
+    "lamps": 3
+   },
+   "slots": [
+    "#a4"
+   ],
+   "voice": "20d108v0",
+   "variants": []
+  },
+  {
+   "id": 132,
+   "name": "bike frame",
+   "category": "engines",
+   "stats": {
+    "weight": 3,
+    "comfort": 1,
+    "strength": 1,
+    "speed": 1,
+    "pedals": 1,
+    "engineType": 2
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d006v0",
+   "variants": []
+  },
+  {
+   "id": 133,
+   "name": "gray gearbox",
+   "category": "gearboxes",
+   "stats": {
+    "weight": 2,
+    "acceleration": 3
+   },
+   "slots": [
+    "#a12"
+   ],
+   "voice": "20d125v0",
+   "variants": []
+  },
+  {
+   "id": 134,
+   "name": "wine barrel",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 5,
+    "loadCapacity": 5,
+    "funnyFactor": 2
+   },
+   "slots": [
+    "#b4",
+    "#b2"
+   ],
+   "voice": "20d103v0",
+   "variants": [
+    {
+     "id": 135,
+     "stats": {
+      "weight": 4,
+      "color": 5,
+      "loadCapacity": 5
+     },
+     "slots": [
+      "#b4"
+     ]
+    },
+    {
+     "id": 136,
+     "stats": {
+      "weight": 4,
+      "funnyFactor": 2,
+      "color": 5
+     },
+     "slots": [
+      "#b2"
+     ]
+    }
+   ],
+   "section": "back"
+  },
+  {
+   "id": 137,
+   "name": "tub",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 1,
+    "loadCapacity": 4
+   },
+   "slots": [
+    "#b4",
+    "#a15",
+    "#a16",
+    "#a17"
+   ],
+   "voice": "20d161v0",
+   "variants": [
+    {
+     "id": 138,
+     "stats": {
+      "weight": 4,
+      "color": 1,
+      "loadCapacity": 4
+     },
+     "slots": [
+      "#b4",
+      "#a15",
+      "#a16",
+      "#a17"
+     ]
+    }
+   ],
+   "section": "back"
+  },
+  {
+   "id": 140,
+   "name": "car tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 3,
+    "durability": 4,
+    "grip": 4
+   },
+   "slots": [
+    "#a13",
+    "#a1"
+   ],
+   "voice": "20d045v0",
+   "variants": [
+    {
+     "id": 141,
+     "stats": {
+      "weight": 3,
+      "durability": 4,
+      "grip": 4
+     },
+     "slots": [
+      "#a13"
+     ]
+    },
+    {
+     "id": 142,
+     "stats": {
+      "weight": 3,
+      "durability": 4,
+      "grip": 4
+     },
+     "slots": [
+      "#a1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 143,
+   "name": "red-rim tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 3,
+    "durability": 4,
+    "grip": 4
+   },
+   "slots": [
+    "#a1",
+    "#a13"
+   ],
+   "voice": "20d124v0",
+   "variants": [
+    {
+     "id": 144,
+     "stats": {
+      "weight": 3,
+      "durability": 4,
+      "grip": 4
+     },
+     "slots": [
+      "#a1"
+     ]
+    },
+    {
+     "id": 145,
+     "stats": {
+      "weight": 3,
+      "durability": 4,
+      "grip": 4
+     },
+     "slots": [
+      "#a13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 146,
+   "name": "telephone kiosk",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 4,
+    "color": 6,
+    "loadCapacity": 5
+   },
+   "slots": [
+    "#b2",
+    "#b4"
+   ],
+   "voice": "20d011v0",
+   "variants": [
+    {
+     "id": 147,
+     "stats": {
+      "weight": 5,
+      "funnyFactor": 4,
+      "color": 6
+     },
+     "slots": [
+      "#b2"
+     ]
+    },
+    {
+     "id": 148,
+     "stats": {
+      "weight": 5,
+      "color": 5,
+      "loadCapacity": 5
+     },
+     "slots": [
+      "#b4"
+     ]
+    }
+   ],
+   "section": "middle"
+  },
+  {
+   "id": 149,
+   "name": "caterpillar",
+   "category": "wheels",
+   "stats": {
+    "weight": 5,
+    "durability": 5,
+    "grip": 9
+   },
+   "slots": [
+    "#a1",
+    "#a13"
+   ],
+   "voice": "20d020v0",
+   "variants": []
+  },
+  {
+   "id": 150,
+   "name": "brakes",
+   "category": "brakes",
+   "stats": {
+    "weight": 1,
+    "brake": 5
+   },
+   "slots": [
+    "#a2",
+    "#a14"
+   ],
+   "voice": "20d055v0",
+   "variants": [
+    {
+     "id": 151,
+     "stats": {
+      "weight": 1,
+      "brake": 5
+     },
+     "slots": [
+      "#a2"
+     ]
+    },
+    {
+     "id": 152,
+     "stats": {
+      "weight": 1,
+      "brake": 5
+     },
+     "slots": [
+      "#a14"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 153,
+   "name": "bicycle wheels",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 2,
+    "grip": 2
+   },
+   "slots": [
+    "#a13",
+    "#a1"
+   ],
+   "voice": "20d017v0",
+   "variants": [
+    {
+     "id": 60,
+     "stats": {
+      "weight": 2,
+      "durability": 2,
+      "grip": 2
+     },
+     "slots": [
+      "#a13"
+     ]
+    },
+    {
+     "id": 61,
+     "stats": {
+      "weight": 2,
+      "durability": 2,
+      "grip": 2
+     },
+     "slots": [
+      "#a1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 154,
+   "name": "red front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 3,
+    "funnyFactor": 1,
+    "lamps": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d052v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 155,
+   "name": "sleeping bag",
+   "category": "bodywork",
+   "stats": {
+    "weight": 1,
+    "color": 4,
+    "funnyFactor": 2,
+    "loadCapacity": 4
+   },
+   "slots": [
+    "#b2",
+    "#b4"
+   ],
+   "voice": "20d053v0",
+   "variants": [
+    {
+     "id": 156,
+     "stats": {
+      "weight": 1,
+      "color": 4,
+      "funnyFactor": 2
+     },
+     "slots": [
+      "#b2"
+     ]
+    },
+    {
+     "id": 157,
+     "stats": {
+      "weight": 1,
+      "color": 4,
+      "loadCapacity": 4
+     },
+     "slots": [
+      "#b4"
+     ]
+    }
+   ],
+   "section": "middle"
+  },
+  {
+   "id": 158,
+   "name": "garden shed",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "color": 5,
+    "funnyFactor": 3,
+    "loadCapacity": 5
+   },
+   "slots": [
+    "#b2",
+    "#b4"
+   ],
+   "voice": "20d050v0",
+   "variants": [
+    {
+     "id": 159,
+     "stats": {
+      "weight": 5,
+      "color": 5,
+      "funnyFactor": 3
+     },
+     "slots": [
+      "#b2"
+     ]
+    },
+    {
+     "id": 160,
+     "stats": {
+      "weight": 6,
+      "color": 6,
+      "loadCapacity": 5
+     },
+     "slots": [
+      "#b4"
+     ]
+    }
+   ],
+   "section": "middle"
+  },
+  {
+   "id": 161,
+   "name": "cowcatcher",
+   "category": "accessories",
+   "stats": {
+    "weight": 1
+   },
+   "slots": [
+    "#a3"
+   ],
+   "voice": "20d049v0",
+   "variants": []
+  },
+  {
+   "id": 162,
+   "name": "milk jar",
+   "category": "tanks",
+   "stats": {
+    "weight": 1,
+    "fuelVolume": 5
+   },
+   "slots": [
+    "#a15",
+    "#a5",
+    "#a7",
+    "#a17"
+   ],
+   "voice": "20d051v0",
+   "variants": [
+    {
+     "id": 163,
+     "stats": {
+      "weight": 1,
+      "fuelVolume": 5
+     },
+     "slots": [
+      "#a15"
+     ]
+    },
+    {
+     "id": 164,
+     "stats": {
+      "weight": 1,
+      "fuelVolume": 5
+     },
+     "slots": [
+      "#a5"
+     ]
+    },
+    {
+     "id": 165,
+     "stats": {
+      "weight": 1,
+      "fuelVolume": 5
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 166,
+     "stats": {
+      "weight": 1,
+      "fuelVolume": 5
+     },
+     "slots": [
+      "#a17"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 167,
+   "name": "toilet",
+   "category": "seats",
+   "stats": {
+    "weight": 2,
+    "comfort": 1
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d048v0",
+   "variants": []
+  },
+  {
+   "id": 168,
+   "name": "smiling boiler front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 1,
+    "funnyFactor": 5
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d047v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 172,
+   "name": "round fuel tank",
+   "category": "tanks",
+   "stats": {
+    "weight": 5,
+    "color": 6,
+    "fuelVolume": 5
+   },
+   "slots": [
+    "#a15",
+    "#a16",
+    "#a17",
+    "#b4"
+   ],
+   "voice": "20d147v0",
+   "variants": []
+  },
+  {
+   "id": 173,
+   "name": "fire ladder",
+   "category": "bodywork",
+   "stats": {
+    "weight": 3,
+    "color": 7
+   },
+   "slots": [
+    "#b4",
+    "#a15",
+    "#a16",
+    "#a17"
+   ],
+   "voice": "20d168v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 174,
+   "name": "ambulance front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 1,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d078v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 175,
+   "name": "ambulance back",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 1,
+    "loadCapacity": 4
+   },
+   "slots": [
+    "#b4"
+   ],
+   "voice": "20d081v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 176,
+   "name": "electric horn",
+   "category": "horns",
+   "stats": {
+    "weight": 1,
+    "horn": 3,
+    "hornType": 3
+   },
+   "slots": [
+    "#a7",
+    "#a5"
+   ],
+   "voice": "20d106v0",
+   "variants": [
+    {
+     "id": 179,
+     "stats": {
+      "weight": 1,
+      "horn": 3,
+      "hornType": 3
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 180,
+     "stats": {
+      "weight": 1,
+      "horn": 3,
+      "hornType": 3
+     },
+     "slots": [
+      "#a5"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 177,
+   "name": "ambulance middle",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 1,
+    "color": 1
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d079v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 178,
+   "name": "chimney",
+   "category": "exhaust",
+   "stats": {
+    "weight": 1
+   },
+   "slots": [
+    "#a19"
+   ],
+   "voice": "20d092v0",
+   "variants": []
+  },
+  {
+   "id": 181,
+   "name": "boat engine",
+   "category": "engines",
+   "stats": {
+    "weight": 3,
+    "speed": 3,
+    "fuelConsumption": 3,
+    "strength": 3,
+    "engineType": 5
+   },
+   "slots": [
+    "#a6",
+    "#a16"
+   ],
+   "voice": "20d074v0",
+   "variants": [
+    {
+     "id": 182,
+     "stats": {
+      "weight": 3,
+      "speed": 3,
+      "fuelConsumption": 3,
+      "strength": 3,
+      "engineType": 5
+     },
+     "slots": [
+      "#a6"
+     ]
+    },
+    {
+     "id": 183,
+     "stats": {
+      "weight": 3,
+      "speed": 3,
+      "fuelConsumption": 3,
+      "strength": 3,
+      "engineType": 5
+     },
+     "slots": [
+      "#a16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 184,
+   "name": "crate seat",
+   "category": "seats",
+   "stats": {
+    "weight": 2,
+    "comfort": 2
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d069v0",
+   "variants": []
+  },
+  {
+   "id": 185,
+   "name": "blue police light",
+   "category": "lights",
+   "stats": {
+    "weight": 1,
+    "lamps": 5
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d070v0",
+   "variants": []
+  },
+  {
+   "id": 186,
+   "name": "racing tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 5,
+    "grip": 4
+   },
+   "slots": [
+    "#a1",
+    "#a13"
+   ],
+   "voice": "20d087v0",
+   "variants": [
+    {
+     "id": 187,
+     "stats": {
+      "weight": 2,
+      "durability": 5,
+      "grip": 4
+     },
+     "slots": [
+      "#a1"
+     ]
+    },
+    {
+     "id": 188,
+     "stats": {
+      "weight": 2,
+      "durability": 5,
+      "grip": 4
+     },
+     "slots": [
+      "#a13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 189,
+   "name": "butterfly chair",
+   "category": "seats",
+   "stats": {
+    "weight": 1,
+    "comfort": 3
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d088v0",
+   "variants": []
+  },
+  {
+   "id": 190,
+   "name": "ship vent",
+   "category": "accessories",
+   "stats": {
+    "weight": 1,
+    "funnyFactor": 2
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d057v0",
+   "variants": []
+  },
+  {
+   "id": 191,
+   "name": "toothpaste mid",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 2,
+    "color": 3
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d093v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 192,
+   "name": "toothpaste front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 3,
+    "funnyFactor": 5
+   },
+   "slots": [
+    "#b1",
+    "#a3"
+   ],
+   "voice": "20d085v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 193,
+   "name": "toothpaste back",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 3,
+    "loadCapacity": 2,
+    "funnyFactor": 4
+   },
+   "slots": [
+    "#b4"
+   ],
+   "voice": "20d086v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 195,
+   "name": "bulb horn",
+   "category": "horns",
+   "stats": {
+    "weight": 1,
+    "horn": 2,
+    "hornType": 4
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d061v0",
+   "variants": []
+  },
+  {
+   "id": 196,
+   "name": "skis",
+   "category": "accessories",
+   "stats": {
+    "weight": 1
+   },
+   "slots": [
+    "#a3",
+    "#a18"
+   ],
+   "voice": "20d139v0",
+   "variants": [
+    {
+     "id": 197,
+     "stats": {
+      "weight": 1
+     },
+     "slots": [
+      "#a3"
+     ]
+    },
+    {
+     "id": 198,
+     "stats": {
+      "weight": 1
+     },
+     "slots": [
+      "#a18"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 199,
+   "name": "hammock cab",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 3,
+    "color": 4,
+    "comfort": 2
+   },
+   "slots": [
+    "#b2",
+    "#a11"
+   ],
+   "voice": "20d080v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 200,
+   "name": "sled runners",
+   "category": "accessories",
+   "stats": {
+    "weight": 2
+   },
+   "slots": [
+    "#a3",
+    "#a18"
+   ],
+   "voice": "20d148v0",
+   "variants": [
+    {
+     "id": 201,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a3"
+     ]
+    },
+    {
+     "id": 202,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a18"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 203,
+   "name": "plastic jerry can",
+   "category": "tanks",
+   "stats": {
+    "weight": 2,
+    "fuelVolume": 3
+   },
+   "slots": [
+    "#a7",
+    "#a17",
+    "#a15",
+    "#a5"
+   ],
+   "voice": "20d089v0",
+   "variants": [
+    {
+     "id": 204,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 205,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a17"
+     ]
+    },
+    {
+     "id": 206,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a15"
+     ]
+    },
+    {
+     "id": 207,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a5"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 208,
+   "name": "police cab",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 1,
+    "color": 1
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d068v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 209,
+   "name": "police front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 2,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d067v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 210,
+   "name": "police back",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 2,
+    "loadCapacity": 2
+   },
+   "slots": [
+    "#b4"
+   ],
+   "voice": "20d064v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 211,
+   "name": "small lamp",
+   "category": "lights",
+   "stats": {
+    "weight": 1,
+    "lamps": 2
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d062v0",
+   "variants": []
+  },
+  {
+   "id": 212,
+   "name": "truck front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "color": 3,
+    "funnyFactor": 2
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d059v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 213,
+   "name": "truck lamp",
+   "category": "horns",
+   "stats": {
+    "weight": 1,
+    "lamps": 2,
+    "horn": 3,
+    "hornType": 4
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d083v0",
+   "variants": []
+  },
+  {
+   "id": 214,
+   "name": "truck bed",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 3,
+    "loadCapacity": 3
+   },
+   "slots": [
+    "#b4",
+    "#a15",
+    "#a16",
+    "#a17"
+   ],
+   "voice": "20d082v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 215,
+   "name": "truck cab",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 1,
+    "color": 3
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d065v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 216,
+   "name": "motorcycle engine",
+   "category": "engines",
+   "stats": {
+    "weight": 3,
+    "speed": 4,
+    "fuelConsumption": 3,
+    "strength": 2,
+    "engineType": 6
+   },
+   "slots": [
+    "#a6",
+    "#a16"
+   ],
+   "voice": "20d090v0",
+   "variants": [
+    {
+     "id": 217,
+     "stats": {
+      "weight": 3,
+      "speed": 4,
+      "fuelConsumption": 3,
+      "strength": 2,
+      "engineType": 6
+     },
+     "slots": [
+      "#a6"
+     ]
+    },
+    {
+     "id": 218,
+     "stats": {
+      "weight": 3,
+      "speed": 4,
+      "fuelConsumption": 3,
+      "strength": 2,
+      "engineType": 6
+     },
+     "slots": [
+      "#a16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 219,
+   "name": "light bar with siren",
+   "category": "horns",
+   "stats": {
+    "weight": 2,
+    "lamps": 3,
+    "horn": 3,
+    "hornType": 4
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d098v0",
+   "variants": []
+  },
+  {
+   "id": 220,
+   "name": "exhaust pipe",
+   "category": "exhaust",
+   "stats": {
+    "weight": 1,
+    "exhaustPipe": 1
+   },
+   "slots": [
+    "#a19"
+   ],
+   "voice": "20d094v0",
+   "variants": []
+  },
+  {
+   "id": 221,
+   "name": "rocket middle",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 3,
+    "color": 6
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d095v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 222,
+   "name": "red jerry can",
+   "category": "tanks",
+   "stats": {
+    "weight": 2,
+    "fuelVolume": 3
+   },
+   "slots": [
+    "#a15",
+    "#a5",
+    "#a7",
+    "#a17"
+   ],
+   "voice": "20d091v0",
+   "variants": [
+    {
+     "id": 223,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a15"
+     ]
+    },
+    {
+     "id": 224,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a5"
+     ]
+    },
+    {
+     "id": 225,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 226,
+     "stats": {
+      "weight": 2,
+      "fuelVolume": 3
+     },
+     "slots": [
+      "#a17"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 227,
+   "name": "rocket nose",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 6,
+    "funnyFactor": 3
+   },
+   "slots": [
+    "#b1",
+    "#a3"
+   ],
+   "voice": "20d096v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 228,
+   "name": "green pennant",
+   "category": "accessories",
+   "stats": {
+    "weight": 1,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d101v0",
+   "variants": []
+  },
+  {
+   "id": 229,
+   "name": "rocket back",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 6,
+    "loadCapacity": 3,
+    "funnyFactor": 3
+   },
+   "slots": [
+    "#b4",
+    "#a15",
+    "#a16",
+    "#a17",
+    "#a18"
+   ],
+   "voice": "20d144v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 230,
+   "name": "rollerblades",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 1,
+    "grip": 1,
+    "funnyFactor": 2
+   },
+   "slots": [
+    "#a1",
+    "#a13"
+   ],
+   "voice": "20d102v0",
+   "variants": [
+    {
+     "id": 231,
+     "stats": {
+      "weight": 2,
+      "durability": 1,
+      "grip": 1,
+      "funnyFactor": 2
+     },
+     "slots": [
+      "#a1"
+     ]
+    },
+    {
+     "id": 232,
+     "stats": {
+      "weight": 2,
+      "durability": 1,
+      "grip": 1,
+      "funnyFactor": 2
+     },
+     "slots": [
+      "#a13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 233,
+   "name": "pedal plank",
+   "category": "engines",
+   "stats": {
+    "weight": 3,
+    "color": 7,
+    "funnyFactor": 4,
+    "speed": 1,
+    "fuelConsumption": 0,
+    "strength": 1,
+    "engineType": 1,
+    "pedals": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d143v0",
+   "variants": []
+  },
+  {
+   "id": 234,
+   "name": "blue pennant",
+   "category": "accessories",
+   "stats": {
+    "weight": 1,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d100v0",
+   "variants": []
+  },
+  {
+   "id": 235,
+   "name": "dump-truck bed",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 7,
+    "loadCapacity": 3
+   },
+   "slots": [
+    "#b4",
+    "#a15",
+    "#a16",
+    "#a17"
+   ],
+   "voice": "20d132v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 236,
+   "name": "drum brakes",
+   "category": "brakes",
+   "stats": {
+    "weight": 1,
+    "brake": 5
+   },
+   "slots": [
+    "#a2",
+    "#a14"
+   ],
+   "voice": "20d137v0",
+   "variants": [
+    {
+     "id": 237,
+     "stats": {
+      "weight": 1,
+      "brake": 5
+     },
+     "slots": [
+      "#a2"
+     ]
+    },
+    {
+     "id": 238,
+     "stats": {
+      "weight": 1,
+      "brake": 5
+     },
+     "slots": [
+      "#a14"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 239,
+   "name": "disc brakes",
+   "category": "brakes",
+   "stats": {
+    "weight": 1,
+    "brake": 3
+   },
+   "slots": [
+    "#a2",
+    "#a14"
+   ],
+   "voice": "20d056v0",
+   "variants": [
+    {
+     "id": 240,
+     "stats": {
+      "weight": 1,
+      "brake": 3
+     },
+     "slots": [
+      "#a2"
+     ]
+    },
+    {
+     "id": 241,
+     "stats": {
+      "weight": 1,
+      "brake": 3
+     },
+     "slots": [
+      "#a14"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 242,
+   "name": "bumper",
+   "category": "accessories",
+   "stats": {
+    "weight": 2
+   },
+   "slots": [
+    "#a3",
+    "#a18"
+   ],
+   "voice": "20d119v0",
+   "variants": [
+    {
+     "id": 243,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a3"
+     ]
+    },
+    {
+     "id": 244,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a18"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 245,
+   "name": "monster tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 3,
+    "durability": 5,
+    "grip": 4
+   },
+   "slots": [
+    "#a13",
+    "#a1"
+   ],
+   "voice": "20d160v0",
+   "variants": [
+    {
+     "id": 246,
+     "stats": {
+      "weight": 3,
+      "durability": 5,
+      "grip": 4
+     },
+     "slots": [
+      "#a13"
+     ]
+    },
+    {
+     "id": 247,
+     "stats": {
+      "weight": 3,
+      "durability": 5,
+      "grip": 4
+     },
+     "slots": [
+      "#a1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 248,
+   "name": "chrome bumper",
+   "category": "accessories",
+   "stats": {
+    "weight": 2
+   },
+   "slots": [
+    "#a3",
+    "#a18"
+   ],
+   "voice": "20d121v0",
+   "variants": [
+    {
+     "id": 249,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a3"
+     ]
+    },
+    {
+     "id": 250,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a18"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 251,
+   "name": "washing-machine engine",
+   "category": "engines",
+   "stats": {
+    "weight": 3,
+    "speed": 1,
+    "strength": 1,
+    "engineType": 2
+   },
+   "slots": [
+    "#a6",
+    "#a8",
+    "#b2"
+   ],
+   "voice": "20d151v0",
+   "variants": [
+    {
+     "id": 252,
+     "stats": {
+      "weight": 3,
+      "speed": 1,
+      "strength": 1,
+      "engineType": 2
+     },
+     "slots": [
+      "#a6",
+      "#a8",
+      "#b2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 254,
+   "name": "log wheels",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 2,
+    "grip": 2,
+    "funnyFactor": 1,
+    "comfort": 1
+   },
+   "slots": [
+    "#a1",
+    "#a13",
+    "#a11"
+   ],
+   "voice": "20d155v0",
+   "variants": [
+    {
+     "id": 255,
+     "stats": {
+      "weight": 2,
+      "durability": 2,
+      "grip": 2,
+      "funnyFactor": 1
+     },
+     "slots": [
+      "#a1"
+     ]
+    },
+    {
+     "id": 256,
+     "stats": {
+      "weight": 2,
+      "durability": 2,
+      "grip": 2,
+      "funnyFactor": 1
+     },
+     "slots": [
+      "#a13"
+     ]
+    },
+    {
+     "id": 270,
+     "stats": {
+      "weight": 2,
+      "comfort": 1
+     },
+     "slots": [
+      "#a11"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 257,
+   "name": "whitewall tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 3,
+    "grip": 3
+   },
+   "slots": [
+    "#a13",
+    "#a1"
+   ],
+   "voice": "20d159v0",
+   "variants": [
+    {
+     "id": 258,
+     "stats": {
+      "weight": 2,
+      "durability": 3,
+      "grip": 3
+     },
+     "slots": [
+      "#a13"
+     ]
+    },
+    {
+     "id": 259,
+     "stats": {
+      "weight": 2,
+      "durability": 3,
+      "grip": 3
+     },
+     "slots": [
+      "#a1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 260,
+   "name": "small gearbox",
+   "category": "gearboxes",
+   "stats": {
+    "weight": 1,
+    "acceleration": 4
+   },
+   "slots": [
+    "#a12"
+   ],
+   "voice": "20d125v0",
+   "variants": []
+  },
+  {
+   "id": 261,
+   "name": "hand brake",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 2,
+    "grip": 1,
+    "funnyFactor": 2
+   },
+   "slots": [
+    "#a13",
+    "#a1"
+   ],
+   "voice": "20d104v0",
+   "variants": [
+    {
+     "id": 262,
+     "stats": {
+      "weight": 2,
+      "durability": 2,
+      "grip": 1,
+      "funnyFactor": 2
+     },
+     "slots": [
+      "#a13"
+     ]
+    },
+    {
+     "id": 263,
+     "stats": {
+      "weight": 2,
+      "durability": 2,
+      "grip": 1,
+      "funnyFactor": 2
+     },
+     "slots": [
+      "#a1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 264,
+   "name": "scania cab",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 1,
+    "color": 6
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d133v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 265,
+   "name": "car battery",
+   "category": "batteries",
+   "stats": {
+    "weight": 3,
+    "electricVolume": 5
+   },
+   "slots": [
+    "#a15",
+    "#a5",
+    "#a7",
+    "#a17"
+   ],
+   "voice": "20d116v0",
+   "variants": [
+    {
+     "id": 266,
+     "stats": {
+      "weight": 3,
+      "electricVolume": 5
+     },
+     "slots": [
+      "#a15"
+     ]
+    },
+    {
+     "id": 267,
+     "stats": {
+      "weight": 3,
+      "electricVolume": 5
+     },
+     "slots": [
+      "#a5"
+     ]
+    },
+    {
+     "id": 268,
+     "stats": {
+      "weight": 3,
+      "electricVolume": 5
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 269,
+     "stats": {
+      "weight": 3,
+      "electricVolume": 5
+     },
+     "slots": [
+      "#a17"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 271,
+   "name": "straight exhaust",
+   "category": "exhaust",
+   "stats": {
+    "weight": 1
+   },
+   "slots": [
+    "#a19"
+   ],
+   "voice": "20d094v0",
+   "variants": []
+  },
+  {
+   "id": 272,
+   "name": "green gearbox",
+   "category": "gearboxes",
+   "stats": {
+    "weight": 1,
+    "acceleration": 3
+   },
+   "slots": [
+    "#a12"
+   ],
+   "voice": "20d115v0",
+   "variants": []
+  },
+  {
+   "id": 273,
+   "name": "wooden-box battery",
+   "category": "batteries",
+   "stats": {
+    "weight": 2,
+    "electricVolume": 2
+   },
+   "slots": [
+    "#a7",
+    "#a17",
+    "#a15",
+    "#a5"
+   ],
+   "voice": "20d116v0",
+   "variants": [
+    {
+     "id": 274,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 2
+     },
+     "slots": [
+      "#a7"
+     ]
+    },
+    {
+     "id": 275,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 2
+     },
+     "slots": [
+      "#a17"
+     ]
+    },
+    {
+     "id": 276,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 2
+     },
+     "slots": [
+      "#a15"
+     ]
+    },
+    {
+     "id": 277,
+     "stats": {
+      "weight": 2,
+      "electricVolume": 2
+     },
+     "slots": [
+      "#a5"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 278,
+   "name": "vintage truck front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 5,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d142v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 279,
+   "name": "taxi front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 5,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d174v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 280,
+   "name": "taxi sign",
+   "category": "lights",
+   "stats": {
+    "weight": 2,
+    "lamps": 1
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d173v0",
+   "variants": []
+  },
+  {
+   "id": 281,
+   "name": "taxi back",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "color": 5,
+    "loadCapacity": 2
+   },
+   "slots": [
+    "#b4"
+   ],
+   "voice": "20d172v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 282,
+   "name": "taxi cab",
+   "category": "bodywork",
+   "stats": {
+    "weight": 5,
+    "funnyFactor": 1,
+    "color": 5
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d170v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 283,
+   "name": "red engine",
+   "category": "engines",
+   "stats": {
+    "weight": 3,
+    "speed": 2,
+    "fuelConsumption": 2,
+    "strength": 5,
+    "engineType": 8
+   },
+   "slots": [
+    "#a6",
+    "#a16"
+   ],
+   "voice": "20d060v0",
+   "variants": [
+    {
+     "id": 284,
+     "stats": {
+      "weight": 3,
+      "speed": 2,
+      "fuelConsumption": 2,
+      "strength": 5,
+      "engineType": 8
+     },
+     "slots": [
+      "#a6"
+     ]
+    },
+    {
+     "id": 285,
+     "stats": {
+      "weight": 3,
+      "speed": 2,
+      "fuelConsumption": 2,
+      "strength": 5,
+      "engineType": 8
+     },
+     "slots": [
+      "#a16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 286,
+   "name": "red pennant",
+   "category": "accessories",
+   "stats": {
+    "weight": 1,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d173v0",
+   "variants": []
+  },
+  {
+   "id": 287,
+   "name": "megaphone",
+   "category": "horns",
+   "stats": {
+    "weight": 1,
+    "horn": 5,
+    "hornType": 5
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d105v0",
+   "variants": []
+  },
+  {
+   "id": 288,
+   "name": "red gearbox",
+   "category": "gearboxes",
+   "stats": {
+    "weight": 1,
+    "acceleration": 2
+   },
+   "slots": [
+    "#a12"
+   ],
+   "voice": "20d015v0",
+   "variants": []
+  },
+  {
+   "id": 289,
+   "name": "trumpet horn",
+   "category": "horns",
+   "stats": {
+    "weight": 1,
+    "horn": 2,
+    "hornType": 2
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d066v0",
+   "variants": []
+  },
+  {
+   "id": 290,
+   "name": "pirate flag",
+   "category": "accessories",
+   "stats": {
+    "weight": 1,
+    "funnyFactor": 2
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d173v0",
+   "variants": []
+  },
+  {
+   "id": 291,
+   "name": "runners",
+   "category": "accessories",
+   "stats": {
+    "weight": 2
+   },
+   "slots": [
+    "#a3",
+    "#a18"
+   ],
+   "voice": "20d121v0",
+   "variants": [
+    {
+     "id": 292,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a3"
+     ]
+    },
+    {
+     "id": 293,
+     "stats": {
+      "weight": 2
+     },
+     "slots": [
+      "#a18"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 294,
+   "name": "green bench seat",
+   "category": "seats",
+   "stats": {
+    "weight": 3,
+    "comfort": 5
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d176v0",
+   "variants": []
+  },
+  {
+   "id": 295,
+   "name": "tiger-stripe couch",
+   "category": "seats",
+   "stats": {
+    "weight": 3,
+    "comfort": 5
+   },
+   "slots": [
+    "#a11"
+   ],
+   "voice": "20d169v0",
+   "variants": []
+  },
+  {
+   "id": 296,
+   "name": "ribbon antenna",
+   "category": "accessories",
+   "stats": {
+    "weight": 1,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b3"
+   ],
+   "voice": "20d173v0",
+   "variants": []
+  },
+  {
+   "id": 297,
+   "name": "roller skates",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 1,
+    "grip": 1
+   },
+   "slots": [
+    "#a13",
+    "#a1"
+   ],
+   "voice": "20d102v0",
+   "variants": [
+    {
+     "id": 298,
+     "stats": {
+      "weight": 2,
+      "durability": 1,
+      "grip": 1
+     },
+     "slots": [
+      "#a13"
+     ]
+    },
+    {
+     "id": 299,
+     "stats": {
+      "weight": 2,
+      "durability": 1,
+      "grip": 1
+     },
+     "slots": [
+      "#a1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 300,
+   "name": "green racer front",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 4,
+    "funnyFactor": 1
+   },
+   "slots": [
+    "#b1"
+   ],
+   "voice": "20d177v0",
+   "variants": [],
+   "section": "front"
+  },
+  {
+   "id": 301,
+   "name": "green racer back",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "color": 4
+   },
+   "slots": [
+    "#b4"
+   ],
+   "voice": "20d178v0",
+   "variants": [],
+   "section": "back"
+  },
+  {
+   "id": 302,
+   "name": "green racer middle",
+   "category": "bodywork",
+   "stats": {
+    "weight": 4,
+    "funnyFactor": 1,
+    "color": 4
+   },
+   "slots": [
+    "#b2"
+   ],
+   "voice": "20d179v0",
+   "variants": [],
+   "section": "middle"
+  },
+  {
+   "id": 303,
+   "name": "spoked tires",
+   "category": "wheels",
+   "stats": {
+    "weight": 2,
+    "durability": 3,
+    "grip": 3
+   },
+   "slots": [
+    "#a1",
+    "#a13"
+   ],
+   "voice": "20d180v0",
+   "variants": [
+    {
+     "id": 304,
+     "stats": {
+      "weight": 2,
+      "durability": 3,
+      "grip": 3
+     },
+     "slots": [
+      "#a1"
+     ]
+    },
+    {
+     "id": 305,
+     "stats": {
+      "weight": 2,
+      "durability": 3,
+      "grip": 3
+     },
+     "slots": [
+      "#a13"
+     ]
+    }
+   ]
+  },
+  {
+   "id": 306,
+   "name": "jet engine",
+   "category": "engines",
+   "stats": {
+    "weight": 5,
+    "speed": 5,
+    "fuelConsumption": 4,
+    "strength": 5,
+    "engineType": 9
+   },
+   "slots": [
+    "#a16",
+    "#a20"
+   ],
+   "voice": "20d003v0",
+   "variants": []
+  },
+  {
+   "id": 307,
+   "name": "steering wheel",
+   "category": "steering",
+   "stats": {
+    "weight": 1,
+    "steering": 3
+   },
+   "slots": [
+    "#a9"
+   ],
+   "voice": "20d134v0",
+   "variants": []
+  }
+ ]
+}

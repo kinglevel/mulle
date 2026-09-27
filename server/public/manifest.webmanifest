@@ -1,7 +1,7 @@
 {
-  "name": "Byg bil med Mulle Meck",
+  "name": "Mulle Meck",
   "short_name": "Mulle Meck",
-  "description": "mulle.js — Byg bil med Mulle Meck i browseren",
+  "description": "mulle.js — Bygg bilar med Mulle Meck / Gary Gadget: Building Cars in the browser",
   "start_url": "/",
   "scope": "/",
   "display": "fullscreen",
@@ -10,7 +10,7 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/loading.png",
+      "src": "/icon.png",
       "sizes": "any",
       "type": "image/png"
     }

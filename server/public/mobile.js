@@ -11,16 +11,16 @@
 
   var game = window.game
   var overlay = document.getElementById('boot-overlay')
-  var bootButton = document.getElementById('boot-button')
-  var fsButton = document.getElementById('fs-button')
   var rotateHint = document.getElementById('rotate-hint')
   var player = document.getElementById('player')
 
-  if (!game) {
-    overlay.innerHTML = '<div class="boot-inner"><h1>Kunne ikke indlæse spillet</h1>' +
-      '<p class="boot-hint">bundle.js blev ikke indlæst — er bygget færdigt?</p></div>'
-    return
-  }
+  var shell = window.MULLE_SHELL || { lang: '', languages: [], ui: {} }
+  var ui = shell.ui || {}
+
+  // menu.js calls MulleShell.start(settings) from the Play tap.
+  window.MulleShell = { ready: !!game, start: function () {} }
+
+  if (!game) return
 
   var params = new URLSearchParams(window.location.search)
 
@@ -32,6 +32,14 @@
    * install that is a guaranteed stall on every load. Re-enable with ?mp=1.
    */
   game.mulle.networkEnabled = params.get('mp') === '1'
+
+  /*
+   * Subtitles. Upstream shows its English subtitles over every language's
+   * voices; only English and Swedish have subtitle text, so show the set
+   * matching this CD's voices and none otherwise (an unknown language makes
+   * the lookup come back empty).
+   */
+  game.mulle.defaultLanguage = shell.subtitles || 'none'
 
   // Hidden by default on mobile, but still reachable for debugging: ?debug=1
   if (params.get('debug') === '1') game.mulle.debug = true
@@ -76,7 +84,7 @@
 
   /*
    * Audio unlock. Phaser boots on a setTimeout after game.setup(), so its
-   * AudioContext is created outside the Spil tap and starts 'suspended' —
+   * AudioContext is created outside the Play tap and starts 'suspended' —
    * and Phaser CE only auto-unlocks it for touch devices. Chrome lets us
    * resume it once the page has had a gesture; Safari wants the resume inside
    * one, hence the listeners as well.
@@ -141,13 +149,40 @@
     }
   }).observe(player, { childList: true })
 
+  /*
+   * Save games per edition. Upstream reads and writes one localStorage key;
+   * an edition with its own saves gets that key suffixed, so e.g. hardcore
+   * progress never mixes with vanilla.
+   */
+  var SAVE_KEY = 'mulle_SaveData'
+
+  function useSaveSlot (slot) {
+    if (!slot) return
+    var key = SAVE_KEY + ':' + slot
+    ;['getItem', 'setItem', 'removeItem'].forEach(function (method) {
+      var original = Storage.prototype[method]
+      Storage.prototype[method] = function (k) {
+        var args = Array.prototype.slice.call(arguments)
+        if (k === SAVE_KEY) args[0] = key
+        return original.apply(this, args)
+      }
+    })
+  }
+
   var started = false
 
-  function start () {
-    if (started) return
-    started = true
-
+  function boot (settings, edition) {
     overlay.classList.add('hidden')
+
+    // Settings from the start screen. Upstream turns cheats on by default;
+    // here they are opt-in, and they show up in the toolbar's Cheats panel.
+    game.mulle.cheats = !!settings.cheats
+    game.mulle.edition = edition.id
+    useSaveSlot(edition.saves)
+    edition.setup(game, settings)
+
+    window.MulleToolbar.show({ game: game, settings: settings, shell: shell },
+      edition.id === 'vanilla' ? shell.title : shell.title + ' · ' + (edition.name || ui[edition.nameKey] || edition.id))
 
     // Centre the letterboxed canvas inside the full-viewport parent.
     game.scale.pageAlignHorizontally = true
@@ -156,35 +191,64 @@
     game.setup()
     resumeAudioWhenBooted()
 
-    // Phaser reads the parent size on boot; the overlay teardown and any
-    // fullscreen transition can both change it a frame later.
+    // Phaser reads the parent size on boot; the overlay teardown, the
+    // toolbar appearing and any fullscreen transition can all change it a
+    // frame later.
     setTimeout(refreshScale, 50)
     setTimeout(refreshScale, 400)
     updateRotateHint()
   }
 
-  bootButton.addEventListener('click', function () {
+  /**
+   * Start the game. Must be called from inside the Play tap: fullscreen and
+   * orientation lock are only granted to a user gesture.
+   *
+   * settings: { edition: id, cheats: bool }
+   */
+  window.MulleShell.start = function (settings) {
+    if (started) return
+    started = true
+    var edition = window.MulleEditions.filter(function (e) { return e.id === settings.edition })[0] ||
+      window.MulleEditions[0]
+    var go = function () { boot(settings, edition) }
     if (isTouch && canFullscreen(document.documentElement)) {
       requestFullscreen(document.documentElement)
         .then(lockLandscape)
         .catch(function () {})
-        .then(start, start)
+        .then(go, go)
     } else {
-      start()
+      go()
     }
-  })
+  }
 
-  // Manual fullscreen toggle for anyone who exits it mid-game.
+  /* ---- built-in tools ---------------------------------------------- */
+
+  // The Cheats tool lives in cheats.js.
+
   if (canFullscreen(document.documentElement)) {
-    fsButton.hidden = false
-    fsButton.addEventListener('click', function () {
-      if (isFullscreen()) {
-        (document.exitFullscreen || document.webkitExitFullscreen).call(document)
-      } else {
-        requestFullscreen(document.documentElement).then(lockLandscape).catch(function () {})
+    window.MulleToolbar.register({
+      id: 'fullscreen',
+      label: ui.fullscreen || 'Fullscreen',
+      icon: '⛶',
+      order: 900,
+      onClick: function () {
+        if (isFullscreen()) {
+          (document.exitFullscreen || document.webkitExitFullscreen).call(document)
+        } else {
+          requestFullscreen(document.documentElement).then(lockLandscape).catch(function () {})
+        }
       }
     })
   }
+
+  window.MulleToolbar.register({
+    id: 'menu',
+    label: ui.menu || 'Menu',
+    icon: '☰',
+    order: 1000,
+    // Back to the start screen. The game saves as you move between places.
+    onClick: function () { window.location.assign(window.location.pathname + window.location.search) }
+  })
 
   window.addEventListener('resize', function () {
     refreshScale()
